@@ -1,0 +1,570 @@
+div#ssotoolbar {
+	display: none;
+}
+p.vspace {
+	margin: 0px !important; padding: 0px !important; display: none !important;
+}
+table p.vspace {
+	margin: 0px !important; padding: 0px !important; display: none !important;
+}
+td p.vspace {
+	margin: 0px !important; padding: 0px !important; display: none !important;
+}
+#wikitext table {
+	font-size: 0.88rem;
+}
+#wikitext table img {
+	margin: 20px 0px;
+}
+#wikitext table td > p {
+	margin-top: 0px !important;
+}
+a.addthis_button_compact {
+	border-bottom-color: white; border-bottom-width: 0px; border-bottom-style: solid;
+}
+a.addthis_button_print {
+	border-bottom-color: white; border-bottom-width: 0px; border-bottom-style: solid;
+}
+a.addthis_button_email {
+	border-bottom-color: white; border-bottom-width: 0px; border-bottom-style: solid;
+}
+a.addthis_button_favorites {
+	border-bottom-color: white; border-bottom-width: 0px; border-bottom-style: solid;
+}
+a.addthis_button_facebook {
+	border-bottom-color: white; border-bottom-width: 0px; border-bottom-style: solid;
+}
+a.addthis_button_twitter {
+	border-bottom-color: white; border-bottom-width: 0px; border-bottom-style: solid;
+}
+input:focus {
+	
+}
+div#twitter_update_list {
+	background: none; width: 100%; color: rgb(255, 255, 255); margin-bottom: 1.6em; float: left;
+}
+div#twitter_update_list span {
+	width: 100%; color: rgb(85, 85, 85); padding-bottom: 0.5em; margin-bottom: 10px; border-bottom-color: rgb(235, 235, 235); border-bottom-width: 1px; border-bottom-style: solid; float: left; display: block;
+}
+div#twitter_update_list > a {
+	color: rgb(227, 76, 0);
+}
+div#blog_update_list {
+	background: none; width: 100%; color: rgb(255, 255, 255); margin-bottom: 1.6em; float: left;
+}
+div#blog_update_list span {
+	width: 100%; color: rgb(85, 85, 85); padding-bottom: 0.5em; margin-bottom: 10px; border-bottom-color: rgb(235, 235, 235); border-bottom-width: 1px; border-bottom-style: solid; float: left; display: block;
+}
+div#blog_update_list > a {
+	color: rgb(227, 76, 0);
+}
+.code {
+	font: 100%/normal Monaco, "Courier New", Courier, mono; height: auto !important; color: rgb(153, 153, 153) !important; font-size-adjust: none; font-stretch: normal;
+}
+.big {
+	color: rgb(0, 151, 156); line-height: 1.6em; font-family: "Lucida Sans", Lucida, Verdana, sans-serif;
+}
+.download_container ul {
+	padding: 0px; list-style-position: inside;
+}
+.download_container ul li {
+	list-style-image: url("img/arrow.gif");
+}
+.download_container ul li:hover {
+	list-style-image: url("img/arrow_blue.gif");
+}
+.question {
+	width: 20%; color: rgb(0, 151, 156); clear: both; margin-bottom: 20px; float: left;
+}
+.answer {
+	width: 78%; margin-bottom: 30px; margin-left: 2%; float: left;
+}
+.productgrid a {
+	border: 0px currentColor; border-image: none; text-decoration: none;
+}
+h3 + p {
+	margin-top: 10px;
+}
+h3 + pre {
+	margin-top: 10px;
+}
+h3 + ul {
+	margin-top: 10px;
+}
+h4 {
+	margin: 1.27em 0px 0.6em; line-height: 1.33rem; font-size: 1rem;
+}
+h5 {
+	color: rgb(111, 111, 111); line-height: 1.4em; font-weight: normal;
+}
+pre {
+	line-height: 20px; font-family: "TyponineSans Monospace Regular 4", "TyponineSans Monospace Light 5"; font-size: 15px; font-style: normal; font-weight: normal; font-stretch: normal; background-color: rgb(236, 241, 241);
+}
+#wikitext pre {
+	margin-bottom: 1.5em;
+}
+p {
+	margin-top: 0px; margin-bottom: 1.5em;
+}
+p.subheader {
+	padding: 10px 0px; line-height: 1.6em; font-size: 1.16rem;
+}
+p + p.subheader {
+	padding: 0px 0px 20px; margin-top: -10px;
+}
+#wikitext table tbody tr td p {
+	margin-top: 20px; margin-bottom: 5px;
+}
+G #wikitext ul:not(.orbit-slides-container) li {
+	line-height: 1.2rem; text-indent: -20px; letter-spacing: 0.1rem; font-size: 0.8rem; margin-bottom: 0.3rem;
+}
+.warranty {
+	margin: 20px 0px; padding: 20px; color: rgb(0, 151, 156); text-transform: uppercase; font-family: "TyponineSans Monospace Regular 4", "TyponineSans Monospace Light 5"; font-size: 0.77rem; font-style: normal; font-weight: normal; font-stretch: normal; background-color: rgb(237, 239, 239);
+}
+.warning {
+	margin: 20px 0px; padding: 20px; color: rgb(0, 151, 156); text-transform: uppercase; font-family: "TyponineSans Monospace Regular 4", "TyponineSans Monospace Light 5"; font-size: 0.77rem; font-style: normal; font-weight: normal; font-stretch: normal; background-color: rgb(237, 239, 239);
+}
+.warranty {
+	background: url("../img/heart.png") no-repeat right rgb(237, 239, 239); padding: 20px 220px 20px 20px;
+}
+div#wikitext {
+	position: relative;
+}
+div#wikitext table {
+	border: currentColor; border-image: none;
+}
+div#wikitext table td {
+	padding-right: 20px;
+}
+div#wikitext table td {
+	padding-left: 20px;
+}
+div#wikitext table td:first-child {
+	padding-left: 0px;
+}
+div#wikitext table td:last-child {
+	padding-right: 0px;
+}
+div#wikitext table td:last-child.panel {
+	padding: 1.25em;
+}
+div#wikitext table td.panel li {
+	line-height: 18px; font-size: 0.72rem;
+}
+div.toc {
+	background: rgb(250, 250, 250); padding: 20px !important; border: 1px solid rgb(232, 232, 232); border-image: none; margin-top: 20px; margin-bottom: 20px !important;
+}
+div.toc p {
+	display: none;
+}
+.borderColumn td {
+	padding-right: 15px; padding-left: 15px; border-right-color: rgb(230, 230, 230); border-right-width: 1px; border-right-style: solid;
+}
+.borderColumn td:first-child {
+	padding-left: 0px;
+}
+.borderColumn td:last-child {
+	border: currentColor; border-image: none; padding-right: 0px;
+}
+#wikitext table.productgrid tbody tr td p strong {
+	font-family: "TyponineSans Monospace Regular 4", "TyponineSans Monospace Light 5";
+}
+table.alternateTab {
+	border: 1px solid rgb(204, 204, 204) !important; border-image: none !important; border-collapse: collapse;
+}
+.alternateTab td {
+	padding: 8px !important;
+}
+.alternateTab tr:nth-child(2n+1) td:nth-child(2n) {
+	background: rgb(247, 246, 246);
+}
+.alternateTab tr:nth-child(2n+1) td:nth-child(2n+1) {
+	background: rgb(233, 245, 245);
+}
+h3 span.small {
+	margin-top: -10px;
+}
+h3 span.small {
+	font-size: 0.8rem;
+}
+h3 span.small a {
+	font-size: 0.8rem;
+}
+.playground#pagetext {
+	width: 700px; float: left;
+}
+.playground #actions {
+	text-align: right; padding-bottom: 15px; font-size: 0.8em; margin-bottom: 30px; border-bottom-color: rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.playground #actions a {
+	padding: 0px 10px;
+}
+.playground #actions a:hover {
+	text-decoration: underline;
+}
+.playground #actions a + a {
+	border-left-color: currentColor; border-left-width: 1px; border-left-style: solid;
+}
+#pagenav {
+	width: 190px; font-size: 0.77rem; margin-right: 30px; float: left;
+}
+.playground h1 {
+	font-size: 1.88rem;
+}
+.playground h2 {
+	font-size: 1.88rem;
+}
+#pagenav p {
+	margin-bottom: 0px;
+}
+#pagenav ul > li {
+	font-size: 12px;
+}
+#pagenav ul {
+	padding: 0px 0px 5px 15px; list-style-position: inside;
+}
+#pagenav p:first-child a {
+	color: rgb(0, 151, 156);
+}
+#pagenav p:first-child em {
+	font-style: normal; display: none;
+}
+#pagenav p.sidehead {
+	border: 0px currentColor; border-image: none; padding-bottom: 0px; margin-bottom: 3px;
+}
+#pageactions {
+	text-align: right; color: rgb(85, 85, 85); padding-bottom: 10px; font-size: 0.8em; margin-left: 261px; background-color: rgb(255, 255, 255);
+}
+#pageactions ul {
+	list-style: none; margin: 0px; padding: 2px;
+}
+#pageactions li {
+	margin: 0px; padding: 2px; display: inline;
+}
+#pageactions a {
+	margin-right: 10px;
+}
+.orbit-timer {
+	display: none;
+}
+.slider-container {
+	height: 397px; position: relative; background-color: rgb(233, 245, 245);
+}
+.slider-container .fixed-caption {
+	padding: 20px; width: 50%; text-align: right; right: 0px; bottom: 0px; color: white; line-height: 1.66em; font-family: "TyponineSans Monospace Regular 4", "TyponineSans Monospace Light 5"; font-size: 0.82em; font-style: normal; font-weight: normal; position: absolute; z-index: 10; font-stretch: normal;
+}
+#wikitext div.row .column {
+	margin: 0px; padding: 0px;
+}
+.columns {
+	margin: 0px; padding: 0px;
+}
+#wikitext div.row .column {
+	font-size: 0.88em;
+}
+.columns p {
+	font-size: 0.88em;
+}
+#wikitext div.row .column {
+	padding-right: 1.1em; padding-left: 1.1em;
+}
+.columns + .columns {
+	padding-right: 1.1em; padding-left: 1.1em;
+}
+#wikitext div.row .column {
+	padding-right: 0px;
+}
+.columns + :last-child.columns {
+	padding-right: 0px;
+}
+.slider-container .fixed-caption p {
+	padding: 8px 0px; text-transform: uppercase; font-size: 1.11em; display: inline; box-shadow: 8px 0px 0px 0px #00979c, -8px 0px 0px 0px #00979c; -ms-hyphens: none; background-color: rgb(0, 151, 156); -webkit-box-shadow: 8px 0 0 0 #00979c, -8px 0 0 0 #00979c; -moz-box-shadow: 8px 0 0 0 #00979c, -8px 0 0 0 #00979c; -webkit-hyphens: none; -moz-hyphens: none; -o-hyphens: none; hyphens: none;
+}
+#wikitext p.small-text {
+	line-height: 1.5em; font-size: 0.82em;
+}
+#homeWidget {
+	
+}
+#homeWidget h3.sidebar-title {
+	display: none;
+}
+#wikiedit textarea {
+	height: 300px;
+}
+#wikitext div.row .lefted {
+	padding-right: 1.1em; padding-left: 0px;
+}
+#wikitext div.row .righted {
+	padding-right: 0px; padding-left: 1.1em;
+}
+#wikitext div.breadcrumb a {
+	color: rgb(51, 51, 51); text-decoration: none;
+}
+#wikitext div.breadcrumb a:link {
+	color: rgb(51, 51, 51); text-decoration: none;
+}
+#wikitext div.breadcrumb a:hover {
+	color: rgb(0, 126, 131);
+}
+div.breadcrumb a:first-child {
+	text-transform: uppercase;
+}
+#wikitext div.breadcrumb {
+	color: rgb(51, 51, 51); line-height: 2.1em; padding-left: 12px; font-size: 14px;
+}
+#wikitext div.subHeader {
+	margin-top: -78px; border-bottom-color: rgb(213, 233, 233); border-bottom-width: 1px; border-bottom-style: solid;
+}
+#wikitext div.breadcrumb p {
+	margin-top: 1em; margin-bottom: 0.8em;
+}
+#wikitext div.language-dropdown {
+	background: rgb(255, 255, 255); border: 1px solid rgb(71, 173, 179); border-image: none; text-transform: uppercase; letter-spacing: 1px; padding-left: 0px; font-family: "TyponineSans Text 16"; font-size: 11px; font-style: normal; font-weight: normal; margin-top: 1em; cursor: pointer; max-width: 130px; font-stretch: normal;
+}
+#wikitext div.language-dropdown .current {
+	color: rgba(0, 0, 0, 0.75); line-height: 2.25em; overflow: hidden; text-decoration: none; margin-right: 2.31em; margin-left: 0.5em; display: block; white-space: nowrap;
+}
+#wikitext div.language-dropdown a {
+	color: rgb(0, 151, 156); line-height: inherit; text-decoration: none;
+}
+#wikitext div.language-dropdown .selector {
+	top: 0px; width: 2.5em; height: 2.31em; right: 0px; display: block; position: absolute;
+}
+#wikitext div.language-dropdown a.selector::after {
+	border-color: rgb(71, 173, 179) transparent transparent;
+}
+#wikitext div.language-dropdown:hover a.selector::after {
+	border-color: rgb(0, 85, 88) transparent transparent;
+}
+#wikitext div.language-dropdown .selector::after {
+	border-width: 5px; border-style: solid inset inset; border-color: currentColor; border-image: none; left: 0.93em; top: 50%; width: 0px; height: 0px; margin-top: -3px; display: block; position: absolute; content: "";
+}
+#wikitext div.language-dropdown ul {
+	background: white; margin: 0px; border: 1px solid rgb(71, 173, 179); border-image: none; left: -1px; top: auto; right: -1px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px !important; display: none; position: absolute; z-index: 1; min-width: 100%; box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.1); -webkit-box-shadow: 0 2px 2px 0px rgba(0, 0, 0, 0.1);
+}
+#wikitext div.language-dropdown ul li {
+	list-style: none; margin: 0px; padding: 0.35em 0px 0.35em 0.37em; color: rgb(85, 85, 85); line-height: 1.5em; text-indent: 2px; font-size: 1em; white-space: nowrap; cursor: default; min-height: 1.5em;
+}
+#wikitext div.language-dropdown ul li:hover {
+	background-color: rgb(194, 224, 224);
+}
+#wikitext div.language-dropdown ul li.selected {
+	cursor: pointer; background-color: rgb(233, 245, 245);
+}
+#wikitext div.language-dropdown ul li::before {
+	display: none; content: "";
+}
+#wikitext div.language-dropdown ul li a {
+	color: rgb(85, 85, 85); display: block;
+}
+#wikitext div.language-dropdown ul li:hover a {
+	color: rgb(85, 85, 85); display: block;
+}
+#wikitext div.language-dropdown ul li a:hover {
+	color: rgb(85, 85, 85); display: block;
+}
+#wikitext .product-page div.row .columns.menu.sticky {
+	padding-left: 3px;
+}
+#wikitext .product-page .sticky.fixed {
+	top: 30px; width: auto;
+}
+#wikitext .product-page ul.product-page-nav li::before {
+	margin-right: 0px; content: "";
+}
+#wikitext .product-page ul.product-page-nav li a {
+	font-size: 14px;
+}
+#wikitext .product-page ul li a:hover {
+	color: rgb(0, 101, 105); text-decoration: none;
+}
+#wikitext .product-page ul.product-page-nav li {
+	margin: 0px; text-indent: 8px; padding-top: 3px; border-bottom-color: rgb(213, 233, 233); border-bottom-width: 1px; border-bottom-style: solid;
+}
+#wikitext .product-page ul li.active {
+	background-color: rgb(225, 239, 239);
+}
+#wikitext .product-page .product-page-nav {
+	max-width: 130px;
+}
+#wikitext .product-page ul.product-page-nav {
+	list-style: none; padding: 0px; width: 130px; color: rgb(0, 151, 156); margin-top: 60px !important; margin-right: 0px;
+}
+#wikitext .product-page .button {
+	height: 34px; font-size: 14px;
+}
+div.product-page div.container-buttons {
+	margin: 35px 0px 0px 40px;
+}
+#wikitext .product-page .buttons {
+	margin: 0px; width: auto; text-align: center; display: inline-block; position: relative;
+}
+div.buttons .blue-button {
+	float: left; position: relative;
+}
+div.buttons .orange-button {
+	float: left; position: relative;
+}
+div.buttons a {
+	float: left; position: relative;
+}
+#wikitext .product-page .buttons a:last-child {
+	margin-left: 0px;
+}
+div.buttons .blue-button {
+	line-height: 14px; margin-right: 10px;
+}
+.orange-button {
+	border: 0px currentColor; transition:0.1s ease-out; border-image: none; top: 0px; color: rgb(255, 255, 255); font-family: "TyponineSans Medium 12"; position: relative; box-shadow: 0px 6px #e67e22; background-color: rgb(241, 196, 15); -webkit-transition: all ease-out .1s; -moz-transition: all ease-out .1s; -o-transition: all ease-out .1s;
+}
+.orange-button:hover {
+	top: 2px; box-shadow: 0px 4px #e67e22; background-color: rgb(241, 196, 15);
+}
+#wikitext .orange-button:focus {
+	top: 2px; box-shadow: 0px 4px #e67e22; background-color: rgb(241, 196, 15);
+}
+.product-page-header {
+	padding: 0px; width: 100%; display: inline-block; position: relative; background-color: rgb(244, 244, 244);
+}
+.product-page-header h1 {
+	color: rgb(79, 78, 78); font-family: "TyponineSans Light 17"; font-size: 40px; margin-bottom: 0px;
+}
+.product-page-header div.text-column {
+	top: 40px; width: 40%; text-align: right; right: 40px; font-family: "TyponineSans Light 17"; font-size: 21px; position: absolute;
+}
+.description {
+	line-height: 23px; font-size: 17.5px; margin-left: 25px;
+}
+div.description {
+	margin-left: 40px;
+}
+div.titolo {
+	margin-left: 40px;
+}
+.titolo {
+	margin: 20px 0px 20px 20px; line-height: 40px; font-size: 35px;
+}
+table tr:nth-child(2n+1) {
+	
+}
+div#wikitext .textsummary table {
+	border: 1px solid rgb(213, 233, 233); border-image: none; font-size: 0.9em;
+}
+div#wikitext .textsummary table td {
+	padding-right: 45px; padding-left: 10px;
+}
+.title1margintop {
+	color: rgb(230, 126, 34); font-family: "TyponineSans Regular 18"; font-size: 30px; margin-top: 45px; margin-bottom: 5px;
+}
+.title1nomargin {
+	color: rgb(230, 126, 34); font-family: "TyponineSans Regular 18"; font-size: 30px; margin-bottom: 5px;
+}
+.textsummary {
+	margin: 0px; padding: 0px; font-size: 18px;
+}
+#wikitext .textsummary ul.textindent li {
+	line-height: 23px; text-indent: -8px; font-size: 18px; margin-left: -10px;
+}
+#wikitext .product-page ul.overview {
+	padding-left: 0px;
+}
+#wikitext .product-page ul.overview li {
+	text-indent: 2px; border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none;
+}
+#wikitext .product-page .textsummary div {
+	line-height: 24px; margin-bottom: 1.5em;
+}
+#wikitext .product-page .textsummary div.subtitle {
+	color: rgb(230, 126, 34); margin-bottom: 0px;
+}
+.big-image {
+	padding: 15px 0px 25px; text-align: center; background-color: rgb(244, 244, 244);
+}
+.big-image img {
+	width: 50%; margin-bottom: 15px;
+}
+#wikitext .product-page .textsummary div.img-description {
+	margin: 0px 200px; border: 1px solid rgb(221, 221, 221); border-image: none;
+}
+.box {
+	color: white; padding-right: 10px; padding-left: 10px; font-size: 13.5px; margin-bottom: 15px; display: inline-block;
+}
+.box.red {
+	background-color: rgb(218, 91, 74);
+}
+.box.orange {
+	margin-left: 5px; background-color: rgb(230, 126, 34);
+}
+.box.brown {
+	margin-left: 5px; background-color: rgb(158, 132, 109);
+}
+.box.blue {
+	margin-left: 5px; background-color: rgb(0, 129, 132);
+}
+.rectdocumentation {
+	width: 216px; height: 78px; color: white; font-size: 15.5px; margin-right: 15px; display: inline-block; background-color: red;
+}
+.rectdocumentation.yellow {
+	background-color: rgb(241, 196, 15);
+}
+.rectdocumentation.yellow:hover {
+	background-color: rgb(224, 185, 23);
+}
+.rectdocumentation.brown {
+	background-color: rgb(158, 132, 109);
+}
+.rectdocumentation.brown:hover {
+	background-color: rgb(140, 117, 100);
+}
+.rectdocumentation.orange {
+	background-color: rgb(230, 126, 34);
+}
+.rectdocumentation.orange:hover {
+	background-color: rgb(211, 109, 34);
+}
+.rectdocumentation.green {
+	background-color: rgb(29, 160, 134);
+}
+.rectdocumentation.green:hover {
+	background-color: rgb(27, 137, 116);
+}
+.rectdocumentation.blue {
+	background-color: rgb(0, 129, 132);
+}
+.rectdocumentation.blue:hover {
+	background-color: rgb(2, 102, 102);
+}
+.immrect {
+	margin-top: 15px; margin-left: 20px; float: left; position: relative;
+}
+.textrect.margin {
+	margin-left: 25px;
+}
+.textrect.margintwo {
+	margin-left: 17px;
+}
+.textrect {
+	margin-top: 15px; margin-left: 21px; float: left; position: relative;
+}
+.header-image {
+	width: 54%;
+}
+ul.product-page-nav + div.note {
+	border: 2px solid rgb(218, 227, 227); border-image: none; text-align: center; padding-top: 15px; margin-top: 20px; max-width: 130px;
+}
+ul.product-page-nav + div.note p {
+	padding: 12px 12px 0px; text-align: center; line-height: 19px; letter-spacing: 0.7px; font-family:; font-size: 13px;
+}
+div.learning-page-header h2 {
+	margin: 20px 0px;
+}
+div.learning-page-header img {
+	width: 100%;
+}
+div.learning-page-header p.description-below {
+	line-height: 34px; font-size: 21px; margin-top: 20px !important;
+}
+ul.follower-list {
+	margin-bottom: 25px !important;
+}
