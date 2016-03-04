@@ -1,0 +1,244 @@
+@font-face {
+	font-family: Ampersand;
+	src: local("Georgia"), local("Garamond"), local("Palatino"), local("Book Antiqua");
+	unicode-range: U+0026;
+}
+@font-face {
+	font-family: Ampersand;
+	src: local("Georgia");
+	unicode-range: U+270C;
+}
+.ampersand {
+	font-family: Ampersand, Verdana, sans-serif;
+}
+.breakword {
+	-ms-word-wrap: break-word;
+}
+.normal-wrap {
+	-ms-word-wrap: normal;
+}
+.inherit-wrap {
+	
+}
+.drop-cap::first-letter {
+	background: none; margin: auto 0.25em auto auto; padding: inherit; color: inherit; line-height: 1; text-indent: 0px; font-family: inherit; font-size: 4em; float: left;
+}
+p + .drop-cap {
+	text-indent: 0px; margin-top: 0px;
+}
+@media only screen
+{
+html {
+	font: 114%/1.75 serif; font-size-adjust: none; font-stretch: normal;
+}
+}
+@media only screen and (min-width:768px)
+{
+html {
+	font: 112.5%/1.75 serif; font-size-adjust: none; font-stretch: normal;
+}
+}
+body {
+	color: rgb(79, 78, 78);
+}
+small {
+	font-size: 65%;
+}
+h1 {
+	color: rgb(34, 34, 34); line-height: 1; margin-top: 0px; text-rendering: optimizeLegibility;
+}
+h2 {
+	color: rgb(34, 34, 34); line-height: 1; margin-top: 0px; text-rendering: optimizeLegibility;
+}
+h3 {
+	color: rgb(34, 34, 34); line-height: 1; margin-top: 0px; text-rendering: optimizeLegibility;
+}
+h4 {
+	color: rgb(34, 34, 34); line-height: 1; margin-top: 0px; text-rendering: optimizeLegibility;
+}
+h5 {
+	color: rgb(34, 34, 34); line-height: 1; margin-top: 0px; text-rendering: optimizeLegibility;
+}
+h6 {
+	color: rgb(34, 34, 34); line-height: 1; margin-top: 0px; text-rendering: optimizeLegibility;
+}
+.tera {
+	font-size: 6.5rem; margin-bottom: 0.25em;
+}
+.giga {
+	font-size: 5rem; margin-bottom: 0.33em;
+}
+.mega {
+	font-size: 4rem; margin-bottom: 0.41em;
+}
+h2 {
+	font-size: 2.66rem; margin-bottom: 0.61rem;
+}
+.beta {
+	font-size: 2.66rem; margin-bottom: 0.61rem;
+}
+h1 {
+	font-size: 2.66rem; margin-bottom: 0.61rem;
+}
+.alpha {
+	font-size: 2.66rem; margin-bottom: 0.61rem;
+}
+h3 {
+	font-size: 1.88rem; margin-bottom: 0.82em;
+}
+.gamma {
+	font-size: 1.88rem; margin-bottom: 0.82em;
+}
+#tocid li a strong {
+	color: rgb(0, 151, 156); border-bottom-color: rgb(0, 151, 156); border-bottom-width: 1px; border-bottom-style: solid;
+}
+h4 {
+	font-size: 1.27rem; margin-bottom: 1.23em;
+}
+.delta {
+	font-size: 1.27rem; margin-bottom: 1.23em;
+}
+h5 {
+	font-size: 1.22rem; margin-bottom: 1.41em;
+}
+.epsilon {
+	font-size: 1.22rem; margin-bottom: 1.41em;
+}
+h6 {
+	font-size: 1rem; margin-bottom: 1.65em;
+}
+.zeta {
+	font-size: 1rem; margin-bottom: 1.65em;
+}
+p {
+	margin: auto auto 1.5em;
+}
+textarea {
+	-ms-hyphens: none; -webkit-hyphens: none; -moz-hyphens: none; -o-hyphens: none; hyphens: none;
+}
+input {
+	-ms-hyphens: none; -webkit-hyphens: none; -moz-hyphens: none; -o-hyphens: none; hyphens: none;
+}
+pre {
+	-ms-hyphens: none; -webkit-hyphens: none; -moz-hyphens: none; -o-hyphens: none; hyphens: none;
+}
+abbr {
+	-ms-hyphens: none; -webkit-hyphens: none; -moz-hyphens: none; -o-hyphens: none; hyphens: none;
+}
+acronym {
+	-ms-hyphens: none; -webkit-hyphens: none; -moz-hyphens: none; -o-hyphens: none; hyphens: none;
+}
+blockquote {
+	-ms-hyphens: none; -webkit-hyphens: none; -moz-hyphens: none; -o-hyphens: none; hyphens: none;
+}
+code {
+	-ms-hyphens: none; -webkit-hyphens: none; -moz-hyphens: none; -o-hyphens: none; hyphens: none;
+}
+dir {
+	-ms-hyphens: none; -webkit-hyphens: none; -moz-hyphens: none; -o-hyphens: none; hyphens: none;
+}
+kbd {
+	-ms-hyphens: none; -webkit-hyphens: none; -moz-hyphens: none; -o-hyphens: none; hyphens: none;
+}
+listing {
+	-ms-hyphens: none; -webkit-hyphens: none; -moz-hyphens: none; -o-hyphens: none; hyphens: none;
+}
+plaintext {
+	-ms-hyphens: none; -webkit-hyphens: none; -moz-hyphens: none; -o-hyphens: none; hyphens: none;
+}
+q {
+	-ms-hyphens: none; -webkit-hyphens: none; -moz-hyphens: none; -o-hyphens: none; hyphens: none;
+}
+samp {
+	-ms-hyphens: none; -webkit-hyphens: none; -moz-hyphens: none; -o-hyphens: none; hyphens: none;
+}
+tt {
+	-ms-hyphens: none; -webkit-hyphens: none; -moz-hyphens: none; -o-hyphens: none; hyphens: none;
+}
+var {
+	-ms-hyphens: none; -webkit-hyphens: none; -moz-hyphens: none; -o-hyphens: none; hyphens: none;
+}
+xmp {
+	-ms-hyphens: none; -webkit-hyphens: none; -moz-hyphens: none; -o-hyphens: none; hyphens: none;
+}
+h1 {
+	-ms-hyphens: none; -webkit-hyphens: none; -moz-hyphens: none; -o-hyphens: none; hyphens: none;
+}
+h2 {
+	-ms-hyphens: none; -webkit-hyphens: none; -moz-hyphens: none; -o-hyphens: none; hyphens: none;
+}
+h3 {
+	-ms-hyphens: none; -webkit-hyphens: none; -moz-hyphens: none; -o-hyphens: none; hyphens: none;
+}
+h4 {
+	-ms-hyphens: none; -webkit-hyphens: none; -moz-hyphens: none; -o-hyphens: none; hyphens: none;
+}
+pre code {
+	white-space: pre-wrap; -ms-word-wrap: normal;
+}
+pre {
+	padding: 5px 10px; white-space: pre; -ms-overflow-x: auto;
+}
+code {
+	font-family: "TyponineSans Monospace Regular 4"; white-space: pre;
+}
+abbr {
+	color: rgb(128, 128, 128); text-transform: lowercase; font-variant: small-caps; font-weight: 600;
+}
+abbr[title]:hover {
+	cursor: help;
+}
+.lining dt {
+	margin: 0px; display: inline;
+}
+.lining dd {
+	margin: 0px; display: inline;
+}
+.lining dt + dt::before {
+	white-space: pre; content: "\A";
+}
+.lining dd + dt::before {
+	white-space: pre; content: "\A";
+}
+.lining dd + dd::before {
+	content: ", ";
+}
+.lining dd::before {
+	margin-left: -0.2em; content: ": ";
+}
+.dictionary-style dt {
+	display: inline; counter-reset: definitions;
+}
+.dictionary-style dt + dt::before {
+	margin-left: -0.2em; content: ", ";
+}
+.dictionary-style dd {
+	display: block; counter-increment: definitions;
+}
+.dictionary-style dd::before {
+	content: counter(definitions, decimal) ". ";
+}
+.blockquote p:last-of-type {
+	margin-bottom: -0.82em;
+}
+.blockquote + figcaption {
+	text-align: right; font-size: inherit; display: block;
+}
+.blockquote + figcaption::before {
+	content: "-";
+}
+.pull-quote {
+	padding: 1em; position: relative;
+}
+.pull-quote::before {
+	height: 1em; color: rgb(220, 151, 110); font-size: 4em; position: absolute; opacity: 0.15;
+}
+.pull-quote::after {
+	height: 1em; color: rgb(220, 151, 110); font-size: 4em; position: absolute; opacity: 0.15;
+}
+.pull-quote::before {
+	left: 0px; top: 0px; content: "“";
+}
+.pull-quote::after {
+	right: 0px; bottom: 0px; content: "”";
+}

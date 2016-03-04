@@ -13,23 +13,25 @@
 #ifndef MadgwickAHRS_h
 #define MadgwickAHRS_h
 #include <math.h>
-#define sampleFreq	512.0f		// sample frequency in Hz
-#define betaDef		0.1f		// 2 * proportional gain
+//#define sampleFreq	512.0f		// sample frequency in Hz
+//#define betaDef		0.1f		// 2 * proportional gain
 
 //----------------------------------------------------------------------------------------------------
 // Variable declaration
 class Madgwick{
+
 private:
     float invSqrt(float x);
-    volatile float beta = betaDef;				// algorithm gain
-    volatile float q0 = 1.0f;
-    volatile float q1 = 0.0f;
-    volatile float q2 = 0.0f;
-    volatile float q3 = 0.0f;	// quaternion of sensor frame relative to auxiliary frame
+	volatile float q0 = 1.0f, q1 = 0.0f, q2 = 0.0f, q3 = 0.0f;	// quaternion of sensor frame relative to auxiliary frame
 
 //---------------------------------------------------------------------------------------------------
 // Function declarations
 public:
+	float sampleFreq;
+	int instability_fix;
+	float beta;				// algorithm gain
+	float q[4];	// quaternion of sensor frame relative to auxiliary frame
+
     Madgwick(void){};
     void update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz);
     void updateIMU(float gx, float gy, float gz, float ax, float ay, float az);
