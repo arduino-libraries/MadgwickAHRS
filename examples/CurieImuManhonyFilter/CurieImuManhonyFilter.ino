@@ -1,6 +1,6 @@
 /*
   ===============================================
-  Example sketch for CurieImu library for Intel(R) Curie(TM) devices.
+  Example sketch for CurieIMU library for Intel(R) Curie(TM) devices.
   Copyright (c) 2015 Intel Corporation.  All rights reserved.
 
   Based on I2C device class (I2Cdev) demonstration Arduino sketch for MPU6050
@@ -46,7 +46,8 @@
     on the Arduino forum.
 */
 
-#include "CurieImu.h"
+#include <CurieIMU.h>
+#include <BMI160.h>
 #include <MahonyAHRS.h>
 #include "CommunicationUtils.h"
 
@@ -62,16 +63,16 @@ Mahony filter; // initialise Madgwick object
  * +/- 1000 degrees/s | 32.8  LSB/deg/s
  * +/- 2000 degrees/s | 16.4  LSB/deg/s
  */
-#define gyro_sensitivity 16.4f
+#define gyro_sensitivity 20.4f
 
 #define C_PI 3.14159265358979323846
 #define rad2deg 180.0f/C_PI 
 #define deg2rad C_PI/180.0f
 
-int16_t ax, ay, az;
-int16_t gx, gy, gz;
+int ax, ay, az, axnorm;
+int gx, gy, gz;
 float yaw, pitch, roll;
-float val[11], ypr[3], val_cal[6];
+float val[14], ypr[3], val_cal[6];
 
 unsigned long lastUpdate = 0;
 unsigned long now1;       // sample period expressed in milliseconds
@@ -87,20 +88,20 @@ void setup() {
   
   // Initialize IMU
   Serial.println("Initializing IMU device...");
-  CurieImu.initialize();
-  CurieImu.setFullScaleAccelRange(BMI160_ACCEL_RANGE_2G);
-  CurieImu.setAccelRate(BMI160_ACCEL_RATE_100HZ);
-  CurieImu.setAccelDLPFMode(BMI160_DLPF_MODE_OSR2);
+  CurieIMU.begin();
+  CurieIMU.setAccelerometerRange(2);
+  CurieIMU.setAccelerometerRate(100);
+  CurieIMU.BMI160Class::setAccelDLPFMode(BMI160_DLPF_MODE_OSR2);
   
-  CurieImu.setFullScaleGyroRange(BMI160_GYRO_RANGE_2000);
-  CurieImu.setGyroRate(BMI160_GYRO_RATE_100HZ);
-  //CurieImu.setGyroDLPFMode(BMI160_DLPF_MODE_OSR2);
+  CurieIMU.setGyroRange(2000);
+  CurieIMU.setGyroRate(100);
+  //CurieIMU.setGyroDLPFMode(BMI160_DLPF_MODE_OSR2);
 
   delay(100);
 
   filter.twoKp = (2.0f * 1.5f);
   filter.twoKi = (2.0f * 0.0075f);
-  //filter.instability_fix = 1;
+  filter.instability_fix = 1;
 
   Serial.println("About to calibrate. Make sure your board is stable and upright");
   delay(1000);
@@ -108,46 +109,35 @@ void setup() {
   // The board must be resting in a horizontal position for 
   // the following calibration procedure to work correctly!
   Serial.print("Starting Gyroscope calibration...");
-  CurieImu.autoCalibrateGyroOffset();
+  CurieIMU.autoCalibrateGyroOffset();
   Serial.println(" Done");
   
   Serial.print("Starting Acceleration calibration...");
-  CurieImu.autoCalibrateXAccelOffset(0);
-  CurieImu.autoCalibrateYAccelOffset(0);
-  CurieImu.autoCalibrateZAccelOffset(1);
+  CurieIMU.autoCalibrateAccelerometerOffset(X_AXIS, 0);
+  CurieIMU.autoCalibrateAccelerometerOffset(Y_AXIS, 0);
+  CurieIMU.autoCalibrateAccelerometerOffset(Z_AXIS, 1);
   Serial.println(" Done");
-  
-  Serial.println("Enabling Gyroscope/Acceleration offset compensation");
-  CurieImu.setGyroOffsetEnabled(true);
-  CurieImu.setAccelOffsetEnabled(true);
-
-  
-  // verify connection to IMU
-  Serial.println("Testing device connections...");
-  if (CurieImu.testConnection()) {
-    Serial.println("CurieImu connection successful");
-  } else {
-    Serial.println("CurieImu connection failed");
-  }
+    
   // configure Arduino LED for activity indicator
   pinMode(ledPin, OUTPUT);
   
 }
 
 void loop() {
-  val_cal[0] = CurieImu.getAccelerationX();
-  val_cal[1] = CurieImu.getAccelerationY();
-  val_cal[2] = CurieImu.getAccelerationZ();
-  val_cal[3] = CurieImu.getRotationX()/gyro_sensitivity;
-  val_cal[4] = CurieImu.getRotationY()/gyro_sensitivity;
-  val_cal[5] = CurieImu.getRotationZ()/gyro_sensitivity;
+  // read raw accel/gyro measurements from device
+  CurieIMU.readMotionSensor(ax, ay, az, gx, gy, gz); 
+  val_cal[0] = ax;
+  val_cal[1] = ay;
+  val_cal[2] = az;
+  val_cal[3] = gx/gyro_sensitivity;
+  val_cal[4] = gy/gyro_sensitivity;
+  val_cal[5] = gz/gyro_sensitivity;
 
   now1 = micros();
   filter.sampleFreq = 1.0f / ((now1 - lastUpdate) / 1000000.0f);
   lastUpdate = now1;
   
   // use function from MagdwickAHRS.h to return quaternions
-  //filter.updateIMU(val_cal[3], val_cal[4] , val_cal[5] , val_cal[0], val_cal[1], val_cal[2]);
   filter.MahonyupdateIMU(val_cal[3]*deg2rad, val_cal[4]*deg2rad, val_cal[5]*deg2rad, val_cal[0], val_cal[1], val_cal[2]);
 
   // functions to find yaw roll and pitch from quaternions
@@ -160,21 +150,14 @@ void loop() {
   val[6] = val_cal[3];
   val[7] = val_cal[4];
   val[8] = val_cal[5];
-  val[9] = 0.0034 * CurieImu.getTemperature() + 73.4;
+  val[9] = 0.0034 * CurieIMU.getTemperature() + 73.4;
 
-  //Serial.print(val[0]); Serial.print("\t"); 
-  //Serial.print(val[1]); Serial.print("\t"); 
-  //Serial.println(val[2]);
-
-  // display tab-separated accel/gyro x/y/z values
-  /*Serial.print("a/g:\t");
-   Serial.print(val_cal[0]);  Serial.print("\t"); Serial.print(val_cal[1]);
-   Serial.print("\t"); Serial.print(val_cal[2]); Serial.print("\t"); 
-   Serial.print(val_cal[3]); Serial.print("\t"); Serial.print(val_cal[4]); 
-   Serial.print("\t"); Serial.println(val_cal[5]);
-  */
+  val[10] = filter.q[0];
+  val[11] = filter.q[1];
+  val[12] = filter.q[2];
+  val[13] = filter.q[3];
   
-   serialPrintFloatArr(val,11);
-   Serial.print('\n');
+  serialPrintFloatArr(val,14);
+  Serial.print('\n');
 }
 
