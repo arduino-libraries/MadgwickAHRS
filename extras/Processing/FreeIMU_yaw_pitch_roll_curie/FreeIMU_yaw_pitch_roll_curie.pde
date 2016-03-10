@@ -110,17 +110,17 @@ void serialEvent(Serial p) {
     if (inputString != null && inputString.length() > 0) {      
       String [] inputStringArr = split(inputString, ",");
       if(inputStringArr.length >= 1) { // q1,q2,q3,q4,\r\n so we have 5 elements
-        Euler[0] = decodeFloat(inputStringArr[6])*PI/180;
-        Euler[1] = decodeFloat(inputStringArr[7])*PI/180;
-        Euler[2] = decodeFloat(inputStringArr[8])*PI/180;
+        Euler[0] = decodeFloat(inputStringArr[0])*PI/180;
+        Euler[1] = decodeFloat(inputStringArr[1])*PI/180;
+        Euler[2] = decodeFloat(inputStringArr[2])*PI/180;
         
-        gx = decodeFloat(inputStringArr[3])*PI/180; 
-        gy = decodeFloat(inputStringArr[4])*PI/180;
-        gz = decodeFloat(inputStringArr[5])*PI/180;
+        gx = decodeFloat(inputStringArr[6])*PI/180; 
+        gy = decodeFloat(inputStringArr[7])*PI/180;
+        gz = decodeFloat(inputStringArr[8])*PI/180;
         
-        ax = decodeFloat(inputStringArr[0]); 
-        ay = decodeFloat(inputStringArr[1]);
-        az = decodeFloat(inputStringArr[2]);
+        ax = decodeFloat(inputStringArr[3]); 
+        ay = decodeFloat(inputStringArr[4]);
+        az = decodeFloat(inputStringArr[5]);
         
         temp = decodeFloat(inputStringArr[9]);
         

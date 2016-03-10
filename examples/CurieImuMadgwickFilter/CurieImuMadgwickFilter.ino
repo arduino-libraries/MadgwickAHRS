@@ -63,7 +63,7 @@ Madgwick filter; // initialise Madgwick object
  * +/- 1000 degrees/s | 32.8  LSB/deg/s
  * +/- 2000 degrees/s | 16.4  LSB/deg/s : use 20.5
  */
-#define gyro_sensitivity 20.5f
+#define gyro_sensitivity 16.4f
 
 #define C_PI 3.14159265358979323846
 #define rad2deg 180.0f/C_PI 
