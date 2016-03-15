@@ -3,7 +3,11 @@
 //=====================================================================================================
 //
 // Implementation of Madgwick's IMU and AHRS algorithms.
-// See: http://www.x-io.co.uk/node/8#open_source_ahrs_and_imu_algorithms
+// See: http://www.x-io.co.uk/open-source-imu-and-ahrs-algorithms/
+//
+// From the x-io website "Open-source resources available on this website are
+// provided under the GNU General Public Licence unless an alternative licence
+// is provided in source."
 //
 // Date			Author          Notes
 // 29/09/2011	SOH Madgwick    Initial release
