@@ -24,17 +24,17 @@
 // Variable declaration
 class Madgwick{
 private:
-    float invSqrt(float x);
-    volatile float beta = betaDef;				// algorithm gain
-    volatile float q0 = 1.0f;
-    volatile float q1 = 0.0f;
-    volatile float q2 = 0.0f;
-    volatile float q3 = 0.0f;	// quaternion of sensor frame relative to auxiliary frame
+    static float invSqrt(float x);
+    float beta;				// algorithm gain
+    float q0;
+    float q1;
+    float q2;
+    float q3;	// quaternion of sensor frame relative to auxiliary frame
 
 //---------------------------------------------------------------------------------------------------
 // Function declarations
 public:
-    Madgwick(void){};
+    Madgwick(void);
     void update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz);
     void updateIMU(float gx, float gy, float gz, float ax, float ay, float az);
     float getPitch(){return atan2(2 * q2 * q3 - 2 * q0 * q1, 2 * q0 * q0 + 2 * q3 * q3 - 1);};

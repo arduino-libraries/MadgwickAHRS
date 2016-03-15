@@ -33,6 +33,14 @@
 //---------------------------------------------------------------------------------------------------
 // AHRS algorithm update
 
+Madgwick::Madgwick() {
+	beta = betaDef;
+	q0 = 1.0f;
+	q1 = 0.0f;
+	q2 = 0.0f;
+	q3 = 0.0f;
+}
+
 void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz) {
 	float recipNorm;
 	float s0, s1, s2, s3;
