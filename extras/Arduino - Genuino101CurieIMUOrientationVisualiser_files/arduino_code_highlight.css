@@ -1,0 +1,210 @@
+ul {
+	margin-top: 0px; margin-bottom: 0px;
+}
+ol {
+	margin-top: 0px; margin-bottom: 0px;
+}
+pre {
+	margin-top: 0px; margin-bottom: 0px;
+}
+dl {
+	margin-top: 0px; margin-bottom: 0px;
+}
+p {
+	margin-top: 0px; margin-bottom: 0px;
+}
+code.escaped {
+	white-space: nowrap;
+}
+.indent {
+	margin-left: 40px;
+}
+.outdent {
+	text-indent: -40px; margin-left: 40px;
+}
+a.createlinktext {
+	text-decoration: none; border-bottom-color: gray; border-bottom-width: 1px; border-bottom-style: dotted;
+}
+a.createlink {
+	top: -0.5em; font-size: smaller; font-weight: bold; text-decoration: none; border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none; position: relative;
+}
+img {
+	border: 0px currentColor; border-image: none;
+}
+span.anchor {
+	top: -0.1em; width: 10px; text-align: center; font-size: 10px; margin-left: -10px; float: left; position: relative;
+}
+span.anchor a {
+	text-decoration: none;
+}
+span.anchor a:hover {
+	text-decoration: underline;
+}
+ol.toc {
+	list-style: none; text-indent: -20px;
+}
+ol.toc ol.toc {
+	text-indent: -40px;
+}
+div.tocfloat {
+	padding: 5px 13px; width: 38%; clear: right; font-size: smaller; margin-right: -13px; margin-bottom: 10px; margin-left: 10px; border-top-color: rgb(85, 85, 85); border-bottom-color: rgb(85, 85, 85); border-top-width: 1px; border-bottom-width: 1px; border-top-style: dotted; border-bottom-style: dotted; float: right; background-color: rgb(238, 238, 238);
+}
+div.toc {
+	background: rgb(247, 247, 247); padding: 5px; border: 1px dotted rgb(204, 204, 204); border-image: none; font-size: smaller; margin-bottom: 10px;
+}
+div.toc p {
+	padding: 5px 5px 3px; margin-top: -5px; margin-right: -5px; margin-left: -5px; border-bottom-color: rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: dotted; background-color: rgb(249, 246, 214);
+}
+.editconflict {
+	color: green; font-style: italic; margin-top: 1.33em; margin-bottom: 1.33em;
+}
+table.markup {
+	border: 2px dotted rgb(204, 204, 255); border-image: none; width: 90%;
+}
+td.markup1 {
+	padding-right: 10px; padding-left: 10px;
+}
+td.markup2 {
+	padding-right: 10px; padding-left: 10px;
+}
+table.vert td.markup1 {
+	border-bottom-color: rgb(204, 204, 255); border-bottom-width: 1px; border-bottom-style: solid;
+}
+table.horiz td.markup1 {
+	width: 23em; border-right-color: rgb(204, 204, 255); border-right-width: 1px; border-right-style: solid;
+}
+table.markup caption {
+	text-align: left;
+}
+div.faq p {
+	margin-left: 2em;
+}
+div.faq pre {
+	margin-left: 2em;
+}
+div.faq p.question {
+	margin: 1em 0px 0.75em; font-weight: bold;
+}
+div.faqtoc div.faq * {
+	display: none;
+}
+div.faqtoc div.faq p.question {
+	margin: 0.5em 0px 0.5em 20px; line-height: normal; font-weight: normal; display: block;
+}
+div.faqtoc div.faq p.question * {
+	display: inline;
+}
+.frame {
+	padding: 4px; border: 1px solid rgb(204, 204, 204); border-image: none; background-color: rgb(249, 249, 249);
+}
+.lfloat {
+	margin-right: 0.5em; float: left;
+}
+.rfloat {
+	margin-left: 0.5em; float: right;
+}
+a.varlink {
+	text-decoration: none;
+}
+.arduino {
+	line-height: 1.25rem; font-family: "TyponineSans Monospace Regular 4", "TyponineSans Monospace Light 5"; font-size: 1rem; font-style: normal; font-weight: normal; font-stretch: normal;
+}
+.arduino .imp {
+	color: red; font-weight: bold;
+}
+.arduino .kw1 {
+	color: rgb(204, 102, 0);
+}
+.arduino .kw2 {
+	color: rgb(0, 102, 153);
+}
+.arduino .kw3 {
+	color: rgb(204, 102, 0); font-weight: bold;
+}
+.arduino .co1 {
+	color: rgb(126, 126, 126); font-style: italic;
+}
+.arduino .co2 {
+	color: rgb(126, 126, 126);
+}
+.arduino .coMULTI {
+	color: rgb(126, 126, 126); font-style: italic;
+}
+.arduino .es0 {
+	color: rgb(0, 0, 153); font-weight: bold;
+}
+.arduino .es1 {
+	color: rgb(0, 0, 153); font-weight: bold;
+}
+.arduino .es2 {
+	color: rgb(102, 0, 153); font-weight: bold;
+}
+.arduino .es3 {
+	color: rgb(102, 0, 153); font-weight: bold;
+}
+.arduino .es4 {
+	color: rgb(102, 0, 153); font-weight: bold;
+}
+.arduino .es5 {
+	color: rgb(0, 102, 153); font-weight: bold;
+}
+.arduino .br0 {
+	color: rgb(0, 0, 0);
+}
+.arduino .sy0 {
+	color: rgb(0, 0, 0);
+}
+.arduino .st0 {
+	color: rgb(0, 102, 204);
+}
+.arduino .nu0 {
+	color: rgb(0, 0, 0);
+}
+.arduino .nu6 {
+	color: rgb(32, 128, 128);
+}
+.arduino .nu8 {
+	color: rgb(32, 128, 128);
+}
+.arduino .nu12 {
+	color: rgb(32, 128, 128);
+}
+.arduino .nu16 {
+	color: rgb(128, 0, 128);
+}
+.arduino .nu17 {
+	color: rgb(128, 0, 128);
+}
+.arduino .nu18 {
+	color: rgb(128, 0, 128);
+}
+.arduino .nu19 {
+	color: rgb(128, 0, 128);
+}
+.arduino .me1 {
+	color: rgb(255, 20, 147);
+}
+.arduino .me2 {
+	color: rgb(255, 20, 147);
+}
+.arduino span.xtra {
+	display: block;
+}
+.sourceblocklink {
+	text-align: right; font-size: smaller;
+}
+.sourceblocktext {
+	padding: 0.5em; color: rgb(0, 0, 0); background-color: rgb(236, 241, 241);
+}
+.sourceblocktext div {
+	
+}
+.sourceblocktext div.head {
+	font: italic/normal serif; padding: 0.5em; font-size-adjust: none; font-stretch: normal;
+}
+.sourceblocktext div.foot {
+	font: italic/normal serif; padding: 0.5em; font-size-adjust: none; font-stretch: normal;
+}
+code {
+	padding: 2px 10px 5px; line-height: 18px; font-size: 15px; background-color: rgb(236, 241, 241);
+}
