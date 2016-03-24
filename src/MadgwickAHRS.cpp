@@ -1,6 +1,6 @@
-//=====================================================================================================
+//=============================================================================================
 // MadgwickAHRS.c
-//=====================================================================================================
+//=============================================================================================
 //
 // Implementation of Madgwick's IMU and AHRS algorithms.
 // See: http://www.x-io.co.uk/open-source-imu-and-ahrs-algorithms/
@@ -14,23 +14,25 @@
 // 02/10/2011	SOH Madgwick	Optimised for reduced CPU load
 // 19/02/2012	SOH Madgwick	Magnetometer measurement is normalised
 //
-//=====================================================================================================
+//=============================================================================================
 
-//---------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------
 // Header files
 
 #include "MadgwickAHRS.h"
 #include <math.h>
 
-//---------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------
 // Definitions
 
+#define sampleFreqDef   512.0f          // sample frequency in Hz
+#define betaDef         0.1f            // 2 * proportional gain
 
 
-//====================================================================================================
+//============================================================================================
 // Functions
 
-//---------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------
 // AHRS algorithm update
 
 Madgwick::Madgwick() {
@@ -39,6 +41,8 @@ Madgwick::Madgwick() {
 	q1 = 0.0f;
 	q2 = 0.0f;
 	q3 = 0.0f;
+	invSampleFreq = 1.0f / sampleFreqDef;
+	anglesComputed = 0;
 }
 
 void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz) {
@@ -54,6 +58,11 @@ void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az
 		return;
 	}
 
+	// Convert gyroscope degrees/sec to radians/sec
+	gx *= 0.0174533f;
+	gy *= 0.0174533f;
+	gz *= 0.0174533f;
+
 	// Rate of change of quaternion from gyroscope
 	qDot1 = 0.5f * (-q1 * gx - q2 * gy - q3 * gz);
 	qDot2 = 0.5f * (q0 * gx + q2 * gz - q3 * gy);
@@ -67,7 +76,7 @@ void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az
 		recipNorm = invSqrt(ax * ax + ay * ay + az * az);
 		ax *= recipNorm;
 		ay *= recipNorm;
-		az *= recipNorm;   
+		az *= recipNorm;
 
 		// Normalise magnetometer measurement
 		recipNorm = invSqrt(mx * mx + my * my + mz * mz);
@@ -100,7 +109,7 @@ void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az
 		// Reference direction of Earth's magnetic field
 		hx = mx * q0q0 - _2q0my * q3 + _2q0mz * q2 + mx * q1q1 + _2q1 * my * q2 + _2q1 * mz * q3 - mx * q2q2 - mx * q3q3;
 		hy = _2q0mx * q3 + my * q0q0 - _2q0mz * q1 + _2q1mx * q2 - my * q1q1 + my * q2q2 + _2q2 * mz * q3 - my * q3q3;
-		_2bx = sqrt(hx * hx + hy * hy);
+		_2bx = sqrtf(hx * hx + hy * hy);
 		_2bz = -_2q0mx * q2 + _2q0my * q1 + mz * q0q0 + _2q1mx * q3 - mz * q1q1 + _2q2 * my * q3 - mz * q2q2 + mz * q3q3;
 		_4bx = 2.0f * _2bx;
 		_4bz = 2.0f * _2bz;
@@ -124,10 +133,10 @@ void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az
 	}
 
 	// Integrate rate of change of quaternion to yield quaternion
-	q0 += qDot1 * (1.0f / sampleFreq);
-	q1 += qDot2 * (1.0f / sampleFreq);
-	q2 += qDot3 * (1.0f / sampleFreq);
-	q3 += qDot4 * (1.0f / sampleFreq);
+	q0 += qDot1 * invSampleFreq;
+	q1 += qDot2 * invSampleFreq;
+	q2 += qDot3 * invSampleFreq;
+	q3 += qDot4 * invSampleFreq;
 
 	// Normalise quaternion
 	recipNorm = invSqrt(q0 * q0 + q1 * q1 + q2 * q2 + q3 * q3);
@@ -135,9 +144,10 @@ void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az
 	q1 *= recipNorm;
 	q2 *= recipNorm;
 	q3 *= recipNorm;
+	anglesComputed = 0;
 }
 
-//---------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------
 // IMU algorithm update
 
 void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float az) {
@@ -145,6 +155,11 @@ void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float
 	float s0, s1, s2, s3;
 	float qDot1, qDot2, qDot3, qDot4;
 	float _2q0, _2q1, _2q2, _2q3, _4q0, _4q1, _4q2 ,_8q1, _8q2, q0q0, q1q1, q2q2, q3q3;
+
+	// Convert gyroscope degrees/sec to radians/sec
+	gx *= 0.0174533f;
+	gy *= 0.0174533f;
+	gz *= 0.0174533f;
 
 	// Rate of change of quaternion from gyroscope
 	qDot1 = 0.5f * (-q1 * gx - q2 * gy - q3 * gz);
@@ -195,10 +210,10 @@ void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float
 	}
 
 	// Integrate rate of change of quaternion to yield quaternion
-	q0 += qDot1 * (1.0f / sampleFreq);
-	q1 += qDot2 * (1.0f / sampleFreq);
-	q2 += qDot3 * (1.0f / sampleFreq);
-	q3 += qDot4 * (1.0f / sampleFreq);
+	q0 += qDot1 * invSampleFreq;
+	q1 += qDot2 * invSampleFreq;
+	q2 += qDot3 * invSampleFreq;
+	q3 += qDot4 * invSampleFreq;
 
 	// Normalise quaternion
 	recipNorm = invSqrt(q0 * q0 + q1 * q1 + q2 * q2 + q3 * q3);
@@ -206,9 +221,10 @@ void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float
 	q1 *= recipNorm;
 	q2 *= recipNorm;
 	q3 *= recipNorm;
+	anglesComputed = 0;
 }
 
-//---------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------
 // Fast inverse square-root
 // See: http://en.wikipedia.org/wiki/Fast_inverse_square_root
 
@@ -219,9 +235,20 @@ float Madgwick::invSqrt(float x) {
 	i = 0x5f3759df - (i>>1);
 	y = *(float*)&i;
 	y = y * (1.5f - (halfx * y * y));
+	y = y * (1.5f - (halfx * y * y));
 	return y;
 }
 
-//====================================================================================================
-// END OF CODE
-//====================================================================================================
+//-------------------------------------------------------------------------------------------
+
+void Madgwick::computeAngles()
+{
+	float x = 2.0f * (q1*q3 - q0*q2);
+	float y = 2.0f * (q0*q1 + q2*q3);
+	float z = q0*q0 - q1*q1 - q2*q2 + q3*q3;
+	pitch = atan2f(x, sqrtf(y*y + z*z));
+	roll = atan2f(y, sqrtf(x*x + z*z));
+	yaw = atan2f(2.0f*q1*q2 - 2.0f*q0*q3, 2.0f*q0*q0 + 2.0f*q1*q1 - 1.0f);
+	anglesComputed = 1;
+}
+
