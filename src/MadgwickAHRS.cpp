@@ -42,6 +42,7 @@ Madgwick::Madgwick() {
 	q2 = 0.0f;
 	q3 = 0.0f;
 	invSampleFreq = 1.0f / sampleFreqDef;
+	anglesComputed = 0;
 }
 
 void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz) {
@@ -138,6 +139,7 @@ void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az
 	q1 *= recipNorm;
 	q2 *= recipNorm;
 	q3 *= recipNorm;
+	anglesComputed = 0;
 }
 
 //-------------------------------------------------------------------------------------------
@@ -209,6 +211,7 @@ void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float
 	q1 *= recipNorm;
 	q2 *= recipNorm;
 	q3 *= recipNorm;
+	anglesComputed = 0;
 }
 
 //-------------------------------------------------------------------------------------------
@@ -225,6 +228,16 @@ float Madgwick::invSqrt(float x) {
 	return y;
 }
 
-//============================================================================================
-// END OF CODE
-//============================================================================================
+//-------------------------------------------------------------------------------------------
+
+void Madgwick::computeAngles()
+{
+	float x = 2.0f * (q1*q3 - q0*q2);
+	float y = 2.0f * (q0*q1 + q2*q3);
+	float z = q0*q0 - q1*q1 - q2*q2 + q3*q3;
+	pitch = atan2f(x, sqrtf(y*y + z*z));
+	roll = atan2f(y, sqrtf(x*x + z*z));
+	yaw = atan2f(2.0f*q1*q2 - 2.0f*q0*q3, 2.0f*q0*q0 + 2.0f*q1*q1 - 1.0f);
+	anglesComputed = 1;
+}
+
