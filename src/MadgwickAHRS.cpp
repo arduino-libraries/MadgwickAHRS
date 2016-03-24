@@ -243,12 +243,9 @@ float Madgwick::invSqrt(float x) {
 
 void Madgwick::computeAngles()
 {
-	float x = 2.0f * (q1*q3 - q0*q2);
-	float y = 2.0f * (q0*q1 + q2*q3);
-	float z = q0*q0 - q1*q1 - q2*q2 + q3*q3;
-	pitch = atan2f(x, sqrtf(y*y + z*z));
-	roll = atan2f(y, sqrtf(x*x + z*z));
-	yaw = atan2f(2.0f*q1*q2 - 2.0f*q0*q3, 2.0f*q0*q0 + 2.0f*q1*q1 - 1.0f);
+	roll = atan2f(q0*q1 + q2*q3, 0.5f - q1*q1 - q2*q2);
+	pitch = asinf(-2.0f * (q1*q3 - q0*q2));
+	yaw = atan2f(q1*q2 + q0*q3, 0.5f - q2*q2 - q3*q3);
 	anglesComputed = 1;
 }
 
