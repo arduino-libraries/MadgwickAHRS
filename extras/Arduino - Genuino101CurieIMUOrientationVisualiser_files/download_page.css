@@ -1,0 +1,342 @@
+.download-page-content {
+	font: 15px/normal arial, sans-serif; font-size-adjust: none; font-stretch: normal;
+}
+.grey-background {
+	background-color: rgb(236, 241, 241);
+}
+.fog-background {
+	background-color: rgb(218, 227, 227);
+}
+.blue-background {
+	color: rgb(255, 255, 255); background-color: rgb(0, 151, 156);
+}
+.blue-title {
+	color: rgb(79, 78, 78); font-family: "TyponineSans Monospace Medium 3"; font-size: 23px;
+}
+.padding-right {
+	padding-right: 3em;
+}
+.image-left {
+	padding-top: 2.5em; margin-left: 2.5em;
+}
+.image-left-heart {
+	padding: 3em 0px 1em; margin-left: 1.7em;
+}
+#pay-pal form {
+	display: none;
+}
+#download-counter {
+	padding: 0px 4px; color: white; background-color: rgb(0, 151, 157);
+}
+.download-img {
+	padding: 3.4em 1em 4.8em 1.3em;
+}
+.margin-top {
+	margin-top: 2em;
+}
+.row.download-page-row {
+	max-width: 100%;
+}
+.margin-bottom {
+	margin-bottom: 2em;
+}
+.padding-all {
+	padding: 2em 2em 3em;
+}
+.border-none {
+	border: currentColor; border-image: none;
+}
+.table-columns td:not(:last-child) {
+	padding: 0px 2em 0px 0px;
+}
+.table-columns td {
+	width: 33.3%;
+}
+div#wikitext table.table-columns td {
+	padding-right: 0px;
+}
+.black-title {
+	color: rgb(79, 78, 78); font-family: "TyponineSans Light 17"; font-size: 40px; margin-bottom: 0.3em;
+}
+.teal-title {
+	color: rgb(0, 151, 157); font-family: "TyponineSans Monospace Regular 4", "TyponineSans Monospace Light 5"; font-size: 28px; margin-bottom: 0.3em;
+}
+.teal-content {
+	color: rgb(0, 151, 157); line-height: 24px; padding-top: 2.5em; padding-bottom: 1.8em; font-family: "TyponineSans Monospace Regular 4", "TyponineSans Monospace Light 5"; font-size: 14px;
+}
+.text-content {
+	font-family: "TyponineSans Light 17"; font-size: 18px;
+}
+.text-content .teal-link {
+	font-size: 18px;
+}
+.text-content-black {
+	font-family: "TyponineSans Text 16"; font-size: 18px;
+}
+.text-content-small {
+	color: black; font-family: "TyponineSans Light 17"; font-size: 14px;
+}
+.text-medium {
+	font-family: "TyponineSans Medium 12"; font-size: 18px;
+}
+.text-medium a {
+	font-family: "TyponineSans Medium 12"; font-size: 18px;
+}
+.teal-link {
+	font-family: "TyponineSans Regular 18"; font-size: 14px;
+}
+.color-white {
+	color: white;
+}
+.color-black {
+	color: black;
+}
+.padding-top {
+	padding-top: 2.5em;
+}
+#wikitext a.teal-link:hover {
+	color: rgb(127, 203, 205);
+}
+.link-paragr {
+	margin: 1em 0px;
+}
+.top-title {
+	color: rgb(79, 78, 78); letter-spacing: 1px; font-family: "TyponineSans Monospace Regular 4", "TyponineSans Monospace Light 5";
+}
+.big-link:hover {
+	background-color: rgb(0, 151, 156);
+}
+.big-link:hover .top-title {
+	color: white;
+}
+.big-link:hover .blue-title {
+	color: white;
+}
+.big-link:hover .text-content-small {
+	color: white;
+}
+.big-link:hover .teal-link {
+	color: white;
+}
+#wikitext a.teal-link.color-white {
+	color: white;
+}
+.big-link:hover {
+	color: rgb(127, 203, 205); text-decoration: none;
+}
+#wikitext a.teal-link:hover {
+	color: rgb(127, 203, 205); text-decoration: none;
+}
+#wikitext a.teal-link.color-white:hover {
+	color: rgb(127, 203, 205); text-decoration: none;
+}
+#wikitext a.bold-hover {
+	font-family: "TyponineSans Light 17";
+}
+#wikitext a.bold-hover:hover {
+	color: rgb(0, 92, 95); text-decoration: none;
+}
+#wikitext table.striped {
+	border: 1px solid rgb(213, 233, 233); border-image: none; width: 100%; line-height: 1.4em;
+}
+table.striped tr:nth-child(2n+1) {
+	height: 38px; background-color: rgb(246, 250, 250);
+}
+table.striped td:nth-child(1) {
+	font-family: "TyponineSans Regular 18"; font-weight: bold;
+}
+#wikitext table.striped td {
+	padding: 4px 8px;
+}
+#wikitext table.striped td:first-child {
+	padding: 4px 8px;
+}
+#wikitext table.table-columns {
+	font-size: 14px;
+}
+.hourly-builds {
+	position: relative;
+}
+.hourly-build-time {
+	padding: 8px 25px 8px 10px; top: 22px; right: 0px; color: white; font-family: "TyponineSans Regular 18"; font-size: 14px; display: none; position: absolute; background-color: rgb(243, 156, 18);
+}
+span.previous-anchor {
+	height: 100px; margin-top: -100px; display: block; visibility: hidden;
+}
+span.hourly-downloads {
+	line-height: 22px; margin-top: 10px; display: block;
+}
+#wikitext table.donate {
+	background: none; margin-bottom: 0px;
+}
+div#wikitext table.donate td {
+	padding-right: 8px;
+}
+div.circle {
+	border-radius: 40px; width: 80px; height: 80px; text-align: center; color: rgb(0, 151, 157); line-height: normal; padding-top: 0.8em; font-family: "TyponineSans Monospace Medium 3"; font-size: 30px; cursor: pointer; background-color: white;
+}
+div#wikitext table.donate td:last-child div {
+	padding-top: 1.4em; font-size: 20px;
+}
+div.circle:hover {
+	color: white; background-color: rgb(127, 203, 205);
+}
+#wikitext sup {
+	top: 0px; vertical-align: top;
+}
+#wikitext p {
+	margin-top: 0px; margin-bottom: 1.5em;
+}
+.large-margin-top {
+	margin-top: 4em;
+}
+.blue-button {
+	border: 0px currentColor; transition:0.1s ease-out; border-image: none; top: 0px; color: rgb(255, 255, 255); font-family: "TyponineSans Medium 12"; font-size: 15px; position: relative; box-shadow: 0px 6px #005c5f; background-color: rgb(0, 151, 156); -webkit-transition: all ease-out .1s; -moz-transition: all ease-out .1s; -o-transition: all ease-out .1s;
+}
+.transparent-button {
+	border: currentColor; border-image: none; top: 0px; color: rgb(127, 140, 141); font-family: "TyponineSans Medium 12"; font-size: 15px; position: relative; background-color: transparent;
+}
+.blue-button:hover {
+	top: 2px; box-shadow: 0px 4px #005c5f; background-color: rgb(0, 151, 156);
+}
+#wikitext .blue-button:focus {
+	top: 2px; box-shadow: 0px 4px #005c5f; background-color: rgb(0, 151, 156);
+}
+.transparent-button:hover {
+	border: currentColor; border-image: none; color: rgb(127, 203, 205); background-color: transparent;
+}
+#wikitext .transparent-button:focus {
+	border: currentColor; border-image: none; color: rgb(127, 203, 205); background-color: transparent;
+}
+#wikitext .button:active {
+	box-shadow: none; -webkit-box-shadow: none;
+}
+#wikitext div.padding-donate {
+	padding-right: 2em; padding-left: 4em;
+}
+.bottom-buttons {
+	text-align: right;
+}
+#wikitext .bottom-buttons a:hover {
+	text-decoration: none;
+}
+.huge-title {
+	padding: 1em 4.5em; text-align: center; color: rgb(0, 151, 157); text-transform: uppercase; line-height: 40px; font-family: "TyponineSans Monospace Regular 4", "TyponineSans Monospace Light 5"; font-size: 45px;
+}
+.huge-title-bold {
+	font-family: "TyponineSans Monospace Bold 3";
+}
+.heart-right {
+	padding: 4em 1em 1em 0.6em;
+}
+.share-your-love {
+	color: white; text-transform: uppercase; font-family: "TyponineSans Regular 18"; font-size: 19px; margin-right: 1.2em; margin-bottom: 0.8em;
+}
+.share-button {
+	border: currentColor; transition:box-shadow 200ms ease-out; border-image: none; width: 200px; text-align: left; text-transform: uppercase; font-family: "TyponineSans Monospace Bold 3"; font-size: 19px; display: inline-block; box-shadow: none; background-color: rgb(0, 151, 157); -webkit-box-shadow: none;
+}
+button.share-button span.icon {
+	height: 22px; float: right; max-width: 10%;
+}
+button.share-button:hover {
+	box-shadow: inset -64px 0px 0px 0px #7fcbcd; background-color: rgb(0, 151, 157);
+}
+.share-buttons {
+	text-align: right; padding-bottom: 2.5em; margin-top: 1.5em;
+}
+#thankyou-twitter-button {
+	margin-right: 1em;
+}
+.donate-modal .donate-modal-body {
+	top: 90%;
+}
+.donate-modal .header h1 span {
+	height: 22px; color: rgb(0, 0, 0); text-transform: none; padding-top: 53px; font-family: "Helvetica Neue","Helvetica",Arial,sans-serif; font-size: 17px; font-weight: bold;
+}
+.donate-modal .header h2 {
+	color: rgb(91, 91, 101); font-family: "HelveticaNeueMedium","HelveticaNeue-Medium","Helvetica Neue Medium","HelveticaNeue","Helvetica Neue",Helvetica,Arial; font-size: 13px; font-weight: normal;
+}
+.greytext {
+	width: 90%; color: rgb(127, 140, 141); line-height: 22px; padding-top: 10px; font-size: 14px;
+}
+.blacktext {
+	width: 92%; color: rgb(55, 65, 70); line-height: 22px; padding-top: 10px; font-size: 14px; margin-bottom: 50px;
+}
+#wikitext .people-page-content .black-title {
+	background-color: white;
+}
+#wikitext ul.people-nav {
+	list-style: none; padding: 0px; color: rgb(0, 151, 156); font-size: 14px; margin-top: 20px !important; margin-right: 0px;
+}
+#wikitext .people-page-content .people-nav {
+	max-width: 110px;
+}
+#wikitext .productspage .people-nav {
+	max-width: 110px;
+}
+#wikitext .people-page-content .large-6 {
+	overflow: hidden;
+}
+#wikitext .people-page-content .sticky.fixed {
+	top: 40px;
+}
+#wikitext .productspage .sticky.fixed {
+	top: 40px;
+}
+#wikitext .people-page-content ul li a:hover {
+	color: rgb(0, 101, 105); text-decoration: none;
+}
+#wikitext .productspage ul li a:hover {
+	color: rgb(0, 101, 105); text-decoration: none;
+}
+#wikitext .people-page-content ul li.active {
+	background-color: rgb(225, 239, 239);
+}
+#wikitext .productspage ul li.active {
+	background-color: rgb(225, 239, 239);
+}
+#wikitext .people-page-content ul li {
+	margin: 0px; text-indent: 8px; padding-top: 3px; border-bottom-color: rgb(213, 233, 233); border-bottom-width: 1px; border-bottom-style: solid;
+}
+#wikitext .productspage ul li {
+	margin: 0px; text-indent: 8px; padding-top: 3px; border-bottom-color: rgb(213, 233, 233); border-bottom-width: 1px; border-bottom-style: solid;
+}
+#wikitext .people-page-content ul li::before {
+	margin-right: 0px; content: "";
+}
+#wikitext .productspage ul li::before {
+	margin-right: 0px; content: "";
+}
+.photo-description {
+	text-align: right; right: 0px; position: absolute;
+}
+.photo-description div {
+	top: -65px; right: 0px; position: relative;
+}
+#wikitext .photo-description div p {
+	margin: 0px; font-family: "TyponineSans Monospace Text 7"; font-size: 14.5px;
+}
+.photo-description div p span {
+	padding: 3px 10px; color: white; background-color: rgb(0, 151, 157);
+}
+.people :nth-child(2n+1).row :nth-child(2n+1).large-6 .photo-description div p span {
+	background-color: rgb(0, 92, 95);
+}
+.people :nth-child(2n).row :nth-child(2n).large-6 .photo-description div p span {
+	background-color: rgb(0, 92, 95);
+}
+#wikitext .people-page-content div.row :first-child.columns {
+	padding-left: 19.5px;
+}
+#wikitext .people-page-content div.row :last-child.columns {
+	padding-right: 19.5px;
+}
+#wikitext .people-page-content div.row .columns.large-2 {
+	padding-left: 0px;
+}
+@media screen and (max-width:540px)
+{
+.photo-description div {
+	right: 0px;
+}
+}
