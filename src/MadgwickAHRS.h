@@ -57,6 +57,12 @@ public:
         if (!anglesComputed) computeAngles();
         return yaw * 57.29578f + 180.0f;
     }
+    void getRPY(float * _roll, float * _pitch, float * _yaw) {
+	if (!anglesComputed) computeAngles();
+	* _roll = roll * 57.29578f;
+	* _pitch = pitch * 57.29578f;
+	* _yaw = yaw * 57.29578f + 180.0f;
+    }
     float getRollRadians() {
         if (!anglesComputed) computeAngles();
         return roll;
@@ -68,6 +74,18 @@ public:
     float getYawRadians() {
         if (!anglesComputed) computeAngles();
         return yaw;
+    }
+    void getRPYRadians(float * _roll, float * _pitch, float * _yaw) {
+	if (!anglesComputed) computeAngles();
+	* _roll = roll;
+	* _pitch = pitch;
+	* _yaw = yaw;
+    }
+    void getQuaternion(float * _q0, float * _q1, float * _q2, float * _q3) {
+	* _q0 = q0;
+	* _q1 = q1;
+	* _q2 = q2;
+	* _q3 = q3;
     }
 };
 #endif
