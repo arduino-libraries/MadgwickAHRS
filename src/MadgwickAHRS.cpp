@@ -42,10 +42,20 @@ Madgwick::Madgwick() {
 	q2 = 0.0f;
 	q3 = 0.0f;
 	invSampleFreq = 1.0f / sampleFreqDef;
+        lastUpdateMillis = 0;
 	anglesComputed = 0;
 }
 
 void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz) {
+	innerUpdate(gx, gy, gz, ax, ay, az, mx, my, mz, invSampleFreq);
+}
+
+void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz, unsigned long currentMillis) {
+	float ellapsedTime = computeEllapsedTime(currentMillis);
+	innerUpdate(gx, gy, gz, ax, ay, az, mx, my, mz, ellapsedTime);
+}
+
+void Madgwick::innerUpdate(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz, float ellapsedTime) {
 	float recipNorm;
 	float s0, s1, s2, s3;
 	float qDot1, qDot2, qDot3, qDot4;
@@ -54,7 +64,7 @@ void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az
 
 	// Use IMU algorithm if magnetometer measurement invalid (avoids NaN in magnetometer normalisation)
 	if((mx == 0.0f) && (my == 0.0f) && (mz == 0.0f)) {
-		updateIMU(gx, gy, gz, ax, ay, az);
+		innerUpdateIMU(gx, gy, gz, ax, ay, az, ellapsedTime);
 		return;
 	}
 
@@ -133,10 +143,10 @@ void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az
 	}
 
 	// Integrate rate of change of quaternion to yield quaternion
-	q0 += qDot1 * invSampleFreq;
-	q1 += qDot2 * invSampleFreq;
-	q2 += qDot3 * invSampleFreq;
-	q3 += qDot4 * invSampleFreq;
+	q0 += qDot1 * ellapsedTime;
+	q1 += qDot2 * ellapsedTime;
+	q2 += qDot3 * ellapsedTime;
+	q3 += qDot4 * ellapsedTime;
 
 	// Normalise quaternion
 	recipNorm = invSqrt(q0 * q0 + q1 * q1 + q2 * q2 + q3 * q3);
@@ -151,6 +161,15 @@ void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az
 // IMU algorithm update
 
 void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float az) {
+	innerUpdateIMU(gx, gy, gz, ax, ay, az, invSampleFreq);
+}
+
+void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float az, unsigned long currentMillis) {
+	float ellapsedTime = computeEllapsedTime(currentMillis);
+	innerUpdateIMU(gx, gy, gz, ax, ay, az, ellapsedTime);
+}
+
+void Madgwick::innerUpdateIMU(float gx, float gy, float gz, float ax, float ay, float az, float ellapsedTime) {
 	float recipNorm;
 	float s0, s1, s2, s3;
 	float qDot1, qDot2, qDot3, qDot4;
@@ -210,10 +229,10 @@ void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float
 	}
 
 	// Integrate rate of change of quaternion to yield quaternion
-	q0 += qDot1 * invSampleFreq;
-	q1 += qDot2 * invSampleFreq;
-	q2 += qDot3 * invSampleFreq;
-	q3 += qDot4 * invSampleFreq;
+	q0 += qDot1 * ellapsedTime;
+	q1 += qDot2 * ellapsedTime;
+	q2 += qDot3 * ellapsedTime;
+	q3 += qDot4 * ellapsedTime;
 
 	// Normalise quaternion
 	recipNorm = invSqrt(q0 * q0 + q1 * q1 + q2 * q2 + q3 * q3);
@@ -247,5 +266,20 @@ void Madgwick::computeAngles()
 	pitch = asinf(-2.0f * (q1*q3 - q0*q2));
 	yaw = atan2f(q1*q2 + q0*q3, 0.5f - q2*q2 - q3*q3);
 	anglesComputed = 1;
+}
+
+//-------------------------------------------------------------------------------------------
+
+float Madgwick::computeEllapsedTime(unsigned long currentMillis)
+{
+	float ellapsedTime = 0.0f;
+
+	if (lastUpdateMillis != 0) {
+		ellapsedTime = (currentMillis - lastUpdateMillis) / 1000.0f;
+	}
+
+	lastUpdateMillis = currentMillis;
+		
+	return ellapsedTime;		
 }
 
