@@ -5,7 +5,7 @@
 
 image:https://github.com/{repository-owner}/{repository-name}/actions/workflows/spell-check.yml/badge.svg["Spell Check status", link="https://github.com/{repository-owner}/{repository-name}/actions/workflows/spell-check.yml"]
 
-This library wraps the official implementation of the MadgwickAHRS algorithm to get orientation of an object based on accelerometer and gyroscope readings
+This library wraps the official implementation of MadgwickAHRS algorithm to get orientation of an object based on accelerometer and gyroscope readings
 
 == License ==
 
