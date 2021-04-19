@@ -14,7 +14,7 @@ void setup() {
   CurieIMU.setAccelerometerRate(25);
   filter.begin(25);
 
-  // Set the accelerometer range to 2G
+  // Set the accelerometer range to 2 g
   CurieIMU.setAccelerometerRange(2);
   // Set the gyroscope range to 250 degrees/second
   CurieIMU.setGyroRange(250);
@@ -67,9 +67,9 @@ void loop() {
 }
 
 float convertRawAcceleration(int aRaw) {
-  // since we are using 2G range
-  // -2g maps to a raw value of -32768
-  // +2g maps to a raw value of 32767
+  // since we are using 2 g range
+  // -2 g maps to a raw value of -32768
+  // +2 g maps to a raw value of 32767
   
   float a = (aRaw * 2.0) / 32768.0;
   return a;
