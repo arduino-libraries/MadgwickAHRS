@@ -8,3 +8,5 @@ updates:
     directory: / # Check the repository's workflows under /.github/workflows/
     schedule:
       interval: daily
+    labels:
+      - "topic: infrastructure"
