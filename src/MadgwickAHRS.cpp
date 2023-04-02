@@ -167,7 +167,12 @@ inline void Madgwick::updateCore(float gx, float gy, float gz, float ax, float a
 	float hx, hy;
 	float _2q0mx, _2q0my, _2q0mz, _2q1mx, _2bx, _2bz, _4bx, _4bz, _2q0, _2q1, _2q2, _2q3, _2q0q2, _2q2q3, q0q0, q0q1, q0q2, q0q3, q1q1, q1q2, q1q3, q2q2, q2q3, q3q3;
 
-	if constexpr (angle == 'D' && angle != 'R'){
+#if __cplusplus < 201703L
+	if (angle == 'D' && angle != 'R')
+#else
+	if constexpr (angle == 'D' && angle != 'R')
+#endif
+	{
 		// Convert gyroscope degrees/sec to radians/sec
 		gx = deg2rad(gx);
 		gy = deg2rad(gy);
@@ -225,21 +230,36 @@ inline void Madgwick::updateCore(float gx, float gy, float gz, float ax, float a
 		_4bx = 2.0f * _2bx;
 		_4bz = 2.0f * _2bz;
 
-		if constexpr (type == 0) {
+#if __cplusplus < 201703L
+		if (type == 0) 
+#else
+		if constexpr (type == 0) 
+#endif
+		{
 			// Gradient decent algorithm corrective step (NWU Frame)
 			s0 = -_2q2 * (2.0f * q1q3 - _2q0q2 - ax) + _2q1 * (2.0f * q0q1 + _2q2q3 - ay) - _2bz * q2 * (_2bx * (0.5f - q2q2 - q3q3) + _2bz * (q1q3 - q0q2) - mx) + (-_2bx * q3 + _2bz * q1) * (_2bx * (q1q2 - q0q3) + _2bz * (q0q1 + q2q3) - my) + _2bx * q2 * (_2bx * (q0q2 + q1q3) + _2bz * (0.5f - q1q1 - q2q2) - mz);
 			s1 = _2q3 * (2.0f * q1q3 - _2q0q2 - ax) + _2q0 * (2.0f * q0q1 + _2q2q3 - ay) - 4.0f * q1 * (1 - 2.0f * q1q1 - 2.0f * q2q2 - az) + _2bz * q3 * (_2bx * (0.5f - q2q2 - q3q3) + _2bz * (q1q3 - q0q2) - mx) + (_2bx * q2 + _2bz * q0) * (_2bx * (q1q2 - q0q3) + _2bz * (q0q1 + q2q3) - my) + (_2bx * q3 - _4bz * q1) * (_2bx * (q0q2 + q1q3) + _2bz * (0.5f - q1q1 - q2q2) - mz);
 			s2 = -_2q0 * (2.0f * q1q3 - _2q0q2 - ax) + _2q3 * (2.0f * q0q1 + _2q2q3 - ay) - 4.0f * q2 * (1 - 2.0f * q1q1 - 2.0f * q2q2 - az) + (-_4bx * q2 - _2bz * q0) * (_2bx * (0.5f - q2q2 - q3q3) + _2bz * (q1q3 - q0q2) - mx) + (_2bx * q1 + _2bz * q3) * (_2bx * (q1q2 - q0q3) + _2bz * (q0q1 + q2q3) - my) + (_2bx * q0 - _4bz * q2) * (_2bx * (q0q2 + q1q3) + _2bz * (0.5f - q1q1 - q2q2) - mz);
 			s3 = _2q1 * (2.0f * q1q3 - _2q0q2 - ax) + _2q2 * (2.0f * q0q1 + _2q2q3 - ay) + (-_4bx * q3 + _2bz * q1) * (_2bx * (0.5f - q2q2 - q3q3) + _2bz * (q1q3 - q0q2) - mx) + (-_2bx * q0 + _2bz * q2) * (_2bx * (q1q2 - q0q3) + _2bz * (q0q1 + q2q3) - my) + _2bx * q1 * (_2bx * (q0q2 + q1q3) + _2bz * (0.5f - q1q1 - q2q2) - mz);
 		}
-		else if constexpr (type == 1) {
+#if __cplusplus < 201703L
+		else if (type == 1)
+#else
+		else if constexpr (type == 1)
+#endif 
+		{
 			// Gradient decent algorithm corrective step (NED Frame)
 			s0 = _2q2 * (- 2.0f * q1q3 + _2q0q2 - ax) - _2q1 * (- 2.0f * q0q1 - _2q2q3 - ay) - _2bz * q2 * (_2bx * (0.5f - q2q2 - q3q3) + _2bz * (q1q3 - q0q2) - mx) + (-_2bx * q3 + _2bz * q1) * (_2bx * (q1q2 - q0q3) + _2bz * (q0q1 + q2q3) - my) + _2bx * q2 * (_2bx * (q0q2 + q1q3) + _2bz * (0.5f - q1q1 - q2q2) - mz);
 			s1 = -_2q3 * (- 2.0f * q1q3 + _2q0q2 - ax) - _2q0 * (- 2.0f * q0q1 - _2q2q3 - ay) + 4.0f * q1 * (-1 + 2.0f * q1q1 + 2.0f * q2q2 - az) + _2bz * q3 * (_2bx * (0.5f - q2q2 - q3q3) + _2bz * (q1q3 - q0q2) - mx) + (_2bx * q2 + _2bz * q0) * (_2bx * (q1q2 - q0q3) + _2bz * (q0q1 + q2q3) - my) + (_2bx * q3 - _4bz * q1) * (_2bx * (q0q2 + q1q3) + _2bz * (0.5f - q1q1 - q2q2) - mz);
 			s2 = _2q0 * (- 2.0f * q1q3 + _2q0q2 - ax) - _2q3 * (- 2.0f * q0q1 - _2q2q3 - ay) + 4.0f * q2 * (-1 + 2.0f * q1q1 + 2.0f * q2q2 - az) + (-_4bx * q2 - _2bz * q0) * (_2bx * (0.5f - q2q2 - q3q3) + _2bz * (q1q3 - q0q2) - mx) + (_2bx * q1 + _2bz * q3) * (_2bx * (q1q2 - q0q3) + _2bz * (q0q1 + q2q3) - my) + (_2bx * q0 - _4bz * q2) * (_2bx * (q0q2 + q1q3) + _2bz * (0.5f - q1q1 - q2q2) - mz);
 			s3 = -_2q1 * (- 2.0f * q1q3 + _2q0q2 - ax) - _2q2 * (- 2.0f * q0q1 - _2q2q3 - ay) + (-_4bx * q3 + _2bz * q1) * (_2bx * (0.5f - q2q2 - q3q3) + _2bz * (q1q3 - q0q2) - mx) + (-_2bx * q0 + _2bz * q2) * (_2bx * (q1q2 - q0q3) + _2bz * (q0q1 + q2q3) - my) + _2bx * q1 * (_2bx * (q0q2 + q1q3) + _2bz * (0.5f - q1q1 - q2q2) - mz);
 		}
-		else if constexpr (type == 2) {
+#if __cplusplus < 201703L
+		else if (type == 2) 
+#else
+		else if constexpr (type == 2) 
+#endif 
+		{
 			// Gradient decent algorithm corrective step (ENU Frame)
 			s0 = -_2q2 * (2.0f * q1q3 - _2q0q2 - ax) + _2q1 * (2.0f * q0q1 + _2q2q3 - ay) + (_2bx * q3 - _2bz * q2) * (_2bx * (q1q2 + q0q3) + _2bz * (q1q3 - q0q2) - mx) + _2bz * q1 * (_2bx * (0.5f - q1q1 - q3q3) + _2bz * (q0q1 + q2q3) - my) - _2bx * q1 * (_2bx * (q2q3 - q0q1) + _2bz * (0.5f - q1q1 - q2q2) - mz);
 			s1 = _2q3 * (2.0f * q1q3 - _2q0q2 - ax) + _2q0 * (2.0f * q0q1 + _2q2q3 - ay) - 4.0f * q1 * (1 - 2.0f * q1q1 - 2.0f * q2q2 - az) + (_2bx * q2 + _2bz * q3) * (_2bx * (q1q2 + q0q3) + _2bz * (q1q3 - q0q2) - mx) + (-_4bx * q1 + _2bz * q0) * (_2bx * (0.5f - q1q1 - q3q3) + _2bz * (q0q1 + q2q3) - my) + (-_2bx * q0 - _4bz * q1) * (_2bx * (q2q3 - q0q1) + _2bz * (0.5f - q1q1 - q2q2) - mz);
@@ -345,7 +365,12 @@ inline void Madgwick::updateIMUCore(float gx, float gy, float gz, float ax, floa
 	float s0, s1, s2, s3;
 	float _2q0, _2q1, _2q2, _2q3, _4q0, _4q1, _4q2 ,_8q1, _8q2, q0q0, q1q1, q2q2, q3q3;
 
-	if constexpr (angle == 'D' && angle != 'R'){
+#if __cplusplus < 201703L
+	if (angle == 'D' && angle != 'R')
+#else
+	if constexpr (angle == 'D' && angle != 'R')
+#endif
+	{
 		// Convert gyroscope degrees/sec to radians/sec
 		gx = deg2rad(gx);
 		gy = deg2rad(gy);
@@ -382,14 +407,24 @@ inline void Madgwick::updateIMUCore(float gx, float gy, float gz, float ax, floa
 		q2q2 = q2 * q2;
 		q3q3 = q3 * q3;
 
-		if constexpr (type == 0 || type == 2) {
+#if __cplusplus < 201703L
+		if (type == 0 || type == 2) 
+#else
+		if constexpr (type == 0 || type == 2) 
+#endif
+		{
 			// Gradient decent algorithm corrective step (NWU / ENU)
 			s0 = _4q0 * q2q2 + _2q2 * ax + _4q0 * q1q1 - _2q1 * ay;
 			s1 = _4q1 * q3q3 - _2q3 * ax + 4.0f * q0q0 * q1 - _2q0 * ay - _4q1 + _8q1 * q1q1 + _8q1 * q2q2 + _4q1 * az;
 			s2 = 4.0f * q0q0 * q2 + _2q0 * ax + _4q2 * q3q3 - _2q3 * ay - _4q2 + _8q2 * q1q1 + _8q2 * q2q2 + _4q2 * az;
 			s3 = 4.0f * q1q1 * q3 - _2q1 * ax + 4.0f * q2q2 * q3 - _2q2 * ay;
 		}
-		else if constexpr (type == 1) {
+#if __cplusplus < 201703L
+		else if (type == 1) 
+#else	
+		else if constexpr (type == 1) 
+#endif	
+		{
 			// Gradient decent algorithm corrective step (NED)
 			s0 = _4q0 * q2q2 - _2q2 * ax + _4q0 * q1q1 + _2q1 * ay;
 			s1 = _4q1 * q3q3 + _2q3 * ax + 4.0f * q0q0 * q1 + _2q0 * ay - _4q1 + _8q1 * q1q1 + _8q1 * q2q2 - _4q1 * az;
