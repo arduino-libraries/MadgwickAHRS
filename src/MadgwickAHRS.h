@@ -17,9 +17,7 @@
 #ifndef MadgwickAHRS_h
 #define MadgwickAHRS_h
 
-#ifndef _USE_MATH_DEFINES
-#define _USE_MATH_DEFINES
-#endif
+#include <Arduino.h>
 #include <math.h>
 
 //-------------------------------------------------------------------------------------------

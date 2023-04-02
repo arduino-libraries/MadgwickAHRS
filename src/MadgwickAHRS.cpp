@@ -509,10 +509,10 @@ float Madgwick::getYawRadians() {
 
 /*Convert degree to radian*/
 inline float Madgwick::deg2rad(float value) {
-    return value * M_PI / 180.0f;
+    return value * PI / 180.0f;
 }
 
 /*Convert radian to degree*/
 inline float Madgwick::rad2deg(float value) {
-    return value * 180.0f / M_PI;
+    return value * 180.0f / PI;
 }
