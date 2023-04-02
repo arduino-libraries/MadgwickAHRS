@@ -168,7 +168,7 @@ inline void Madgwick::updateCore(float gx, float gy, float gz, float ax, float a
 	float _2q0mx, _2q0my, _2q0mz, _2q1mx, _2bx, _2bz, _4bx, _4bz, _2q0, _2q1, _2q2, _2q3, _2q0q2, _2q2q3, q0q0, q0q1, q0q2, q0q3, q1q1, q1q2, q1q3, q2q2, q2q3, q3q3;
 
 #if __cplusplus < 201703L
-	if (angle == 'D' && angle != 'R')
+	if (angle == 'D')
 #else
 	if constexpr (angle == 'D' && angle != 'R')
 #endif
@@ -255,7 +255,7 @@ inline void Madgwick::updateCore(float gx, float gy, float gz, float ax, float a
 			s3 = -_2q1 * (- 2.0f * q1q3 + _2q0q2 - ax) - _2q2 * (- 2.0f * q0q1 - _2q2q3 - ay) + (-_4bx * q3 + _2bz * q1) * (_2bx * (0.5f - q2q2 - q3q3) + _2bz * (q1q3 - q0q2) - mx) + (-_2bx * q0 + _2bz * q2) * (_2bx * (q1q2 - q0q3) + _2bz * (q0q1 + q2q3) - my) + _2bx * q1 * (_2bx * (q0q2 + q1q3) + _2bz * (0.5f - q1q1 - q2q2) - mz);
 		}
 #if __cplusplus < 201703L
-		else if (type == 2) 
+		else
 #else
 		else if constexpr (type == 2) 
 #endif 
@@ -366,7 +366,7 @@ inline void Madgwick::updateIMUCore(float gx, float gy, float gz, float ax, floa
 	float _2q0, _2q1, _2q2, _2q3, _4q0, _4q1, _4q2 ,_8q1, _8q2, q0q0, q1q1, q2q2, q3q3;
 
 #if __cplusplus < 201703L
-	if (angle == 'D' && angle != 'R')
+	if (angle == 'D')
 #else
 	if constexpr (angle == 'D' && angle != 'R')
 #endif
@@ -420,7 +420,7 @@ inline void Madgwick::updateIMUCore(float gx, float gy, float gz, float ax, floa
 			s3 = 4.0f * q1q1 * q3 - _2q1 * ax + 4.0f * q2q2 * q3 - _2q2 * ay;
 		}
 #if __cplusplus < 201703L
-		else if (type == 1) 
+		else 
 #else	
 		else if constexpr (type == 1) 
 #endif	
