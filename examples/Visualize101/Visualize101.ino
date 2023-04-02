@@ -8,11 +8,15 @@ float accelScale, gyroScale;
 void setup() {
   Serial.begin(9600);
 
-  // start the IMU and filter
+  // start the IMU
   CurieIMU.begin();
   CurieIMU.setGyroRate(25);
   CurieIMU.setAccelerometerRate(25);
-  filter.begin(25);
+
+  //Setting the Madgwick's filter parameter (beta)
+  filter.setBeta(0.1);
+  //Setting the IMU update frequency in Hz
+  filter.setFrequency(25);
 
   // Set the accelerometer range to 2 g
   CurieIMU.setAccelerometerRange(2);
@@ -48,12 +52,16 @@ void loop() {
     gz = convertRawGyro(giz);
 
     // update the filter, which computes orientation
-    filter.updateIMU(gx, gy, gz, ax, ay, az);
+    // the first template parameter is the local reference frame
+    // NWU = 0, NED = 1, ENU = 2
+    // the second template parameter is the measurement unit of the gyroscope reading
+    // 'D' = degree per second, 'R' = radians per second 
+    filter.updateIMU<0,'D'>(gx, gy, gz, ax, ay, az);
 
-    // print the heading, pitch and roll
-    roll = filter.getRoll();
-    pitch = filter.getPitch();
-    heading = filter.getYaw();
+    // print the heading, pitch and roll (Tait-Bryan angle in ZYX convention)
+    roll = filter.getRollDegree();
+    pitch = filter.getPitchDegree();
+    heading = filter.getYawDegree();
     Serial.print("Orientation: ");
     Serial.print(heading);
     Serial.print(" ");
