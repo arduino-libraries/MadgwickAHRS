@@ -1,4 +1,5 @@
 #include <CurieIMU.h>
+// for better performance, compile this code using at least C++ 17.
 #include <MadgwickAHRS.h>
 
 Madgwick filter;
@@ -13,9 +14,9 @@ void setup() {
   CurieIMU.setGyroRate(25);
   CurieIMU.setAccelerometerRate(25);
 
-  //Setting the Madgwick's filter parameter (beta)
+  // set the Madgwick's filter parameter (beta)
   filter.setBeta(0.1);
-  //Setting the IMU update frequency in Hz
+  // set the IMU update frequency in Hz
   filter.setFrequency(25);
 
   // Set the accelerometer range to 2 g
@@ -34,6 +35,7 @@ void loop() {
   float ax, ay, az;
   float gx, gy, gz;
   float roll, pitch, heading;
+  float q[4];
   unsigned long microsNow;
 
   // check if it's time to read data and update the filter
@@ -68,6 +70,17 @@ void loop() {
     Serial.print(pitch);
     Serial.print(" ");
     Serial.println(roll);
+
+    // get and print the quaternion
+    filter.getQuaternion(q);
+    Serial.print("Quaternion: ");
+    Serial.print(q[0]);
+    Serial.print(" ");
+    Serial.print(q[1]);
+    Serial.print(" ");
+    Serial.print(q[2]);
+    Serial.print(" ");
+    Serial.println(q[3]);
 
     // increment previous time, so we keep proper pace
     microsPrevious = microsPrevious + microsPerReading;
