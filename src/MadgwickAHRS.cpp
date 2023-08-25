@@ -45,7 +45,7 @@ Madgwick::Madgwick() {
 	anglesComputed = 0;
 }
 
-void Madgwick::updateDt(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz, float dt) {
+void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz, float dt) {
 	float recipNorm;
 	float s0, s1, s2, s3;
 	float qDot1, qDot2, qDot3, qDot4;
@@ -148,13 +148,13 @@ void Madgwick::updateDt(float gx, float gy, float gz, float ax, float ay, float 
 }
 
 void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz) {
-	updateDt(gx, gy, gz, ax, ay, az, mx, my, mz, invSampleFreq);
+	update(gx, gy, gz, ax, ay, az, mx, my, mz, invSampleFreq);
 }
 
 //-------------------------------------------------------------------------------------------
 // IMU algorithm update
 
-void Madgwick::updateIMUDt(float gx, float gy, float gz, float ax, float ay, float az, float dt) {
+void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float az, float dt) {
 	float recipNorm;
 	float s0, s1, s2, s3;
 	float qDot1, qDot2, qDot3, qDot4;
@@ -229,7 +229,7 @@ void Madgwick::updateIMUDt(float gx, float gy, float gz, float ax, float ay, flo
 }
 
 void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float az) {
-	updateIMUDt(gx, gy, gz, ax, ay, az, invSampleFreq);
+	updateIMU(gx, gy, gz, ax, ay, az, invSampleFreq);
 }
 
 //-------------------------------------------------------------------------------------------
