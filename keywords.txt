@@ -13,7 +13,9 @@ Madgwick	KEYWORD1
 #######################################
 
 update	KEYWORD2
+updateDt	KEYWORD2
 updateIMU	KEYWORD2
+updateIMUDt	KEYWORD2
 getPitch	KEYWORD2
 getYaw	KEYWORD2
 getRoll	KEYWORD2
