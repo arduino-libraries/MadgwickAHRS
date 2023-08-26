@@ -21,6 +21,7 @@
 
 #include "MadgwickAHRS.h"
 #include <math.h>
+#include <time.h>
 
 //-------------------------------------------------------------------------------------------
 // Definitions
@@ -41,8 +42,10 @@ Madgwick::Madgwick() {
 	q1 = 0.0f;
 	q2 = 0.0f;
 	q3 = 0.0f;
-	invSampleFreq = 1.0f / sampleFreqDef;
+	invSampleFreq = 0;
 	anglesComputed = 0;
+	last_clock = clock();
+	getDt = &Madgwick::calculateDt;
 }
 
 void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz, float dt) {
@@ -148,7 +151,7 @@ void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az
 }
 
 void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz) {
-	update(gx, gy, gz, ax, ay, az, mx, my, mz, invSampleFreq);
+	update(gx, gy, gz, ax, ay, az, mx, my, mz, (*this.*getDt)());
 }
 
 //-------------------------------------------------------------------------------------------
@@ -229,7 +232,7 @@ void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float
 }
 
 void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float az) {
-	updateIMU(gx, gy, gz, ax, ay, az, invSampleFreq);
+	updateIMU(gx, gy, gz, ax, ay, az, (*this.*getDt)());
 }
 
 //-------------------------------------------------------------------------------------------
@@ -257,3 +260,15 @@ void Madgwick::computeAngles()
 	anglesComputed = 1;
 }
 
+float Madgwick::calculateDt()
+{
+	clock_t now = clock();
+	float result = double(now - last_clock) / CLOCKS_PER_SEC;
+	last_clock = now;
+	return result;
+}
+
+float Madgwick::getInvSampleFreq()
+{
+	return invSampleFreq;
+}

@@ -17,6 +17,7 @@
 #ifndef MadgwickAHRS_h
 #define MadgwickAHRS_h
 #include <math.h>
+#include <time.h>
 
 //--------------------------------------------------------------------------------------------
 // Variable declaration
@@ -34,12 +35,19 @@ private:
     float yaw;
     char anglesComputed;
     void computeAngles();
+    clock_t last_clock;
+    float (Madgwick::*getDt)();
+    float calculateDt();
+    float getInvSampleFreq();
 
 //-------------------------------------------------------------------------------------------
 // Function declarations
 public:
     Madgwick(void);
-    void begin(float sampleFrequency) { invSampleFreq = 1.0f / sampleFrequency; }
+    void begin(float sampleFrequency) { 
+        invSampleFreq = 1.0f / sampleFrequency;
+        getDt = &Madgwick::getInvSampleFreq;
+    }
     void update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz, float dt);
     void update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz);
     void updateIMU(float gx, float gy, float gz, float ax, float ay, float az, float dt);
