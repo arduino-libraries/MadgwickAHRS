@@ -31,10 +31,3 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 Implementation of Madgwick's IMU and AHRS algorithms.
 See: http://www.x-io.co.uk/node/8#open_source_ahrs_and_imu_algorithms
 
-|===
-|Date		|Author		|Notes
-
-|29/09/2011	|SOH Madgwick	|Initial release
-|02/10/2011	|SOH Madgwick	|Optimised for reduced CPU load
-|19/02/2012	|SOH Madgwick	|Magnetometer measurement is normalised
-|===
