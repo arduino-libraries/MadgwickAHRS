@@ -36,6 +36,7 @@ jobs:
           - fqbn: Intel:arc32:arduino_101
             platforms: |
               - name: Intel:arc32
+            artifact-name-suffix: Intel-arc32-arduino_101
 
     steps:
       - name: Checkout repository
@@ -62,4 +63,4 @@ jobs:
         with:
           if-no-files-found: error
           path: ${{ env.SKETCHES_REPORTS_PATH }}
-          name: ${{ env.SKETCHES_REPORTS_PATH }}
+          name: sketches-report-${{ matrix.board.artifact-name-suffix }}
