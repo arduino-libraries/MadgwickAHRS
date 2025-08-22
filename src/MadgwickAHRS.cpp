@@ -50,7 +50,7 @@ void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az
 	float s0, s1, s2, s3;
 	float qDot1, qDot2, qDot3, qDot4;
 	float hx, hy;
-	float _2q0mx, _2q0my, _2q0mz, _2q1mx, _2bx, _2bz, _4bx, _4bz, _2q0, _2q1, _2q2, _2q3, _2q0q2, _2q2q3, q0q0, q0q1, q0q2, q0q3, q1q1, q1q2, q1q3, q2q2, q2q3, q3q3;
+	float _2q0mx, _2q0my, _2q0mz, _2q1mx, _bx, _bz, _2bx, _2bz, _4bx, _4bz, _2q0, _2q1, _2q2, _2q3, _2q0q2, _2q2q3, q0q0, q0q1, q0q2, q0q3, q1q1, q1q2, q1q3, q2q2, q2q3, q3q3;
 
 	// Use IMU algorithm if magnetometer measurement invalid (avoids NaN in magnetometer normalisation)
 	if((mx == 0.0f) && (my == 0.0f) && (mz == 0.0f)) {
@@ -109,8 +109,10 @@ void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az
 		// Reference direction of Earth's magnetic field
 		hx = mx * q0q0 - _2q0my * q3 + _2q0mz * q2 + mx * q1q1 + _2q1 * my * q2 + _2q1 * mz * q3 - mx * q2q2 - mx * q3q3;
 		hy = _2q0mx * q3 + my * q0q0 - _2q0mz * q1 + _2q1mx * q2 - my * q1q1 + my * q2q2 + _2q2 * mz * q3 - my * q3q3;
-		_2bx = sqrtf(hx * hx + hy * hy);
-		_2bz = -_2q0mx * q2 + _2q0my * q1 + mz * q0q0 + _2q1mx * q3 - mz * q1q1 + _2q2 * my * q3 - mz * q2q2 + mz * q3q3;
+		_bx = sqrt(hx * hx + hy * hy);
+		_bz = -_2q0mx * q2 + _2q0my * q1 + mz * q0q0 + _2q1mx * q3 - mz * q1q1 + _2q2 * my * q3 - mz * q2q2 + mz * q3q3;
+		_2bx = 2.0f * _bx;
+		_2bz = 2.0f * _bz;
 		_4bx = 2.0f * _2bx;
 		_4bz = 2.0f * _2bz;
 
