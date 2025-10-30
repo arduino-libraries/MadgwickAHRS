@@ -17,7 +17,9 @@ updateIMU	KEYWORD2
 getPitch	KEYWORD2
 getYaw	KEYWORD2
 getRoll	KEYWORD2
-
+getYPR	KEYWORD2
+getYPRRadians	KEYWORD2
+getQuaternion	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
