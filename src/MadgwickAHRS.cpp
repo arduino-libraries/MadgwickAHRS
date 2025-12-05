@@ -21,6 +21,7 @@
 
 #include "MadgwickAHRS.h"
 #include <math.h>
+#include <time.h>
 
 //-------------------------------------------------------------------------------------------
 // Definitions
@@ -41,11 +42,13 @@ Madgwick::Madgwick() {
 	q1 = 0.0f;
 	q2 = 0.0f;
 	q3 = 0.0f;
-	invSampleFreq = 1.0f / sampleFreqDef;
+	invSampleFreq = 0;
 	anglesComputed = 0;
+	last_clock = clock();
+	getDt = &Madgwick::calculateDt;
 }
 
-void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz) {
+void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz, float dt) {
 	float recipNorm;
 	float s0, s1, s2, s3;
 	float qDot1, qDot2, qDot3, qDot4;
@@ -133,10 +136,10 @@ void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az
 	}
 
 	// Integrate rate of change of quaternion to yield quaternion
-	q0 += qDot1 * invSampleFreq;
-	q1 += qDot2 * invSampleFreq;
-	q2 += qDot3 * invSampleFreq;
-	q3 += qDot4 * invSampleFreq;
+	q0 += qDot1 * dt;
+	q1 += qDot2 * dt;
+	q2 += qDot3 * dt;
+	q3 += qDot4 * dt;
 
 	// Normalise quaternion
 	recipNorm = invSqrt(q0 * q0 + q1 * q1 + q2 * q2 + q3 * q3);
@@ -147,10 +150,14 @@ void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az
 	anglesComputed = 0;
 }
 
+void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz) {
+	update(gx, gy, gz, ax, ay, az, mx, my, mz, (*this.*getDt)());
+}
+
 //-------------------------------------------------------------------------------------------
 // IMU algorithm update
 
-void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float az) {
+void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float az, float dt) {
 	float recipNorm;
 	float s0, s1, s2, s3;
 	float qDot1, qDot2, qDot3, qDot4;
@@ -210,10 +217,10 @@ void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float
 	}
 
 	// Integrate rate of change of quaternion to yield quaternion
-	q0 += qDot1 * invSampleFreq;
-	q1 += qDot2 * invSampleFreq;
-	q2 += qDot3 * invSampleFreq;
-	q3 += qDot4 * invSampleFreq;
+	q0 += qDot1 * dt;
+	q1 += qDot2 * dt;
+	q2 += qDot3 * dt;
+	q3 += qDot4 * dt;
 
 	// Normalise quaternion
 	recipNorm = invSqrt(q0 * q0 + q1 * q1 + q2 * q2 + q3 * q3);
@@ -222,6 +229,10 @@ void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float
 	q2 *= recipNorm;
 	q3 *= recipNorm;
 	anglesComputed = 0;
+}
+
+void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float az) {
+	updateIMU(gx, gy, gz, ax, ay, az, (*this.*getDt)());
 }
 
 //-------------------------------------------------------------------------------------------
@@ -249,3 +260,15 @@ void Madgwick::computeAngles()
 	anglesComputed = 1;
 }
 
+float Madgwick::calculateDt()
+{
+	clock_t now = clock();
+	float result = double(now - last_clock) / CLOCKS_PER_SEC;
+	last_clock = now;
+	return result;
+}
+
+float Madgwick::getInvSampleFreq()
+{
+	return invSampleFreq;
+}
