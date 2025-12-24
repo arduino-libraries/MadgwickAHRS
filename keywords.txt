@@ -12,11 +12,17 @@ Madgwick	KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
 
+setBeta	KEYWORD2
+setFrequency	KEYWORD2
+getQuaternion	KEYWORD2
 update	KEYWORD2
 updateIMU	KEYWORD2
-getPitch	KEYWORD2
-getYaw	KEYWORD2
-getRoll	KEYWORD2
+getPitchDegree	KEYWORD2
+getYawDegree	KEYWORD2
+getRollDegree	KEYWORD2
+getPitchRadians	KEYWORD2
+getYawRadians	KEYWORD2
+getRollRadians	KEYWORD2
 
 
 #######################################
