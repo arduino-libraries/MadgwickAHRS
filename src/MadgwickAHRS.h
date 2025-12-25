@@ -45,6 +45,9 @@ public:
     //float getPitch(){return atan2f(2.0f * q2 * q3 - 2.0f * q0 * q1, 2.0f * q0 * q0 + 2.0f * q3 * q3 - 1.0f);};
     //float getRoll(){return -1.0f * asinf(2.0f * q1 * q3 + 2.0f * q0 * q2);};
     //float getYaw(){return atan2f(2.0f * q1 * q2 - 2.0f * q0 * q3, 2.0f * q0 * q0 + 2.0f * q1 * q1 - 1.0f);};
+    float* getQuaternion() {
+        return {q0,q1,q2,q3};
+    }
     float getRoll() {
         if (!anglesComputed) computeAngles();
         return roll * 57.29578f;
